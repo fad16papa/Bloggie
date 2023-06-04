@@ -2,6 +2,7 @@
 using Bloggie.Web.Models.Domain;
 using Bloggie.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Win32;
 
 namespace Bloggie.Web.Controllers
 {
@@ -43,6 +44,76 @@ namespace Bloggie.Web.Controllers
             var tags = _bloggieDbContext.Tags.ToList();
 
             return View(tags);
+        }
+
+        [HttpGet]
+        [ActionName("Edit")]
+        public IActionResult Edit(Guid id)
+        {
+            //var tag = _bloggieDbContext.Tags.Find(id);
+
+            var tag = _bloggieDbContext.Tags.FirstOrDefault(x => x.Id == id);
+
+            if(tag != null)
+            {
+                var editTagRequest = new EditTagRequest()
+                {
+                    Id = tag.Id,
+                    Name = tag.Name,
+                    DisplayName = tag.DisplayName
+                };
+
+                return View(editTagRequest);
+            }
+            return View(null);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+        public IActionResult Edit(EditTagRequest editTagRequest)
+        {
+            var tag = new Tag()
+            {
+                Id = editTagRequest.Id,
+                Name = editTagRequest.Name,
+                DisplayName = editTagRequest.DisplayName,
+            };
+
+            var existingTag = _bloggieDbContext.Tags.Find(tag.Id);
+
+            if(existingTag != null)
+            {
+                existingTag.Name = tag.Name;
+                existingTag.DisplayName = tag.DisplayName;
+
+                //save changes
+                _bloggieDbContext.SaveChanges();
+
+                //show success notification
+                return RedirectToAction("List");
+            }
+
+            //show failure notification
+            return RedirectToAction("Edit", new { id = editTagRequest.Id });
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult Delete(EditTagRequest editTagRequest)
+        {
+            var tag = _bloggieDbContext.Tags.Find(editTagRequest.Id);
+
+            if(tag != null)
+            {
+                _bloggieDbContext.Tags.Remove(tag);
+                _bloggieDbContext.SaveChanges();
+
+                //show success notification
+                return RedirectToAction("List");
+            }
+
+            //show error notification
+            return RedirectToAction("Edit", new { id = editTagRequest.Id });
         }
     }
 }
