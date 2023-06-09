@@ -1,7 +1,9 @@
 ﻿using Bloggie.Web.Data;
 using Bloggie.Web.Models.Domain;
 using Bloggie.Web.Models.ViewModels;
+using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 
 namespace Bloggie.Web.Controllers
@@ -9,10 +11,12 @@ namespace Bloggie.Web.Controllers
     public class AdminTagController : Controller
     {
         private readonly BloggieDbContext _bloggieDbContext;
+        private readonly ITagInterface _tagInterface;
 
-        public AdminTagController(BloggieDbContext bloggieDbContext)
+        public AdminTagController(BloggieDbContext bloggieDbContext, ITagInterface tagInterface)
         {
             _bloggieDbContext = bloggieDbContext;
+            _tagInterface = tagInterface;
         }
 
         [HttpGet]
@@ -23,7 +27,7 @@ namespace Bloggie.Web.Controllers
 
         [HttpPost]
         [ActionName("Add")]
-        public IActionResult SubmitTag(AddTagRequest addTagRequest)
+        public async Task<IActionResult> SubmitTag(AddTagRequest addTagRequest)
         {
             var tag = new Tag
             {
@@ -31,30 +35,27 @@ namespace Bloggie.Web.Controllers
                 DisplayName = addTagRequest.DisplayName
             };
 
-            _bloggieDbContext.Tags.Add(tag);
-            _bloggieDbContext.SaveChanges();
+            await _tagInterface.AddAsync(tag);
 
             return RedirectToAction("List");
         }
 
         [HttpGet]
         [ActionName("List")]
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
-            var tags = _bloggieDbContext.Tags.ToList();
+            var tags = await _tagInterface.GetAllAsync();
 
             return View(tags);
         }
 
         [HttpGet]
         [ActionName("Edit")]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            //var tag = _bloggieDbContext.Tags.Find(id);
+            var tag = await _tagInterface.GetAsync(id);
 
-            var tag = _bloggieDbContext.Tags.FirstOrDefault(x => x.Id == id);
-
-            if(tag != null)
+            if (tag != null)
             {
                 var editTagRequest = new EditTagRequest()
                 {
@@ -70,7 +71,7 @@ namespace Bloggie.Web.Controllers
 
         [HttpPost]
         [ActionName("Edit")]
-        public IActionResult Edit(EditTagRequest editTagRequest)
+        public async Task<IActionResult> Edit(EditTagRequest editTagRequest)
         {
             var tag = new Tag()
             {
@@ -79,18 +80,15 @@ namespace Bloggie.Web.Controllers
                 DisplayName = editTagRequest.DisplayName,
             };
 
-            var existingTag = _bloggieDbContext.Tags.Find(tag.Id);
+            var updatedTag = await _tagInterface.UpdateAsync(tag);
 
-            if(existingTag != null)
+            if (updatedTag != null)
             {
-                existingTag.Name = tag.Name;
-                existingTag.DisplayName = tag.DisplayName;
-
-                //save changes
-                _bloggieDbContext.SaveChanges();
-
                 //show success notification
-                return RedirectToAction("List");
+            }
+            else
+            {
+                //show error notification
             }
 
             //show failure notification
@@ -99,15 +97,12 @@ namespace Bloggie.Web.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
-        public IActionResult Delete(EditTagRequest editTagRequest)
+        public async Task<IActionResult> Delete(EditTagRequest editTagRequest)
         {
-            var tag = _bloggieDbContext.Tags.Find(editTagRequest.Id);
+            var deletedTag = await _tagInterface.DeleteAsync(editTagRequest.Id);
 
-            if(tag != null)
+            if (deletedTag != null)
             {
-                _bloggieDbContext.Tags.Remove(tag);
-                _bloggieDbContext.SaveChanges();
-
                 //show success notification
                 return RedirectToAction("List");
             }
