@@ -10,12 +10,10 @@ namespace Bloggie.Web.Controllers
 {
     public class AdminTagController : Controller
     {
-        private readonly BloggieDbContext _bloggieDbContext;
         private readonly ITagInterface _tagInterface;
 
-        public AdminTagController(BloggieDbContext bloggieDbContext, ITagInterface tagInterface)
+        public AdminTagController(ITagInterface tagInterface)
         {
-            _bloggieDbContext = bloggieDbContext;
             _tagInterface = tagInterface;
         }
 
