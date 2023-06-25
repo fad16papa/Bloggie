@@ -14,6 +14,7 @@ builder.Services.AddDbContext<BloggieDbContext>(options =>
 });
 
 builder.Services.AddScoped<ITagInterface, TagService>();
+builder.Services.AddScoped<IBlogPostInterface, BlogPostService>();
 
 var app = builder.Build();
 
