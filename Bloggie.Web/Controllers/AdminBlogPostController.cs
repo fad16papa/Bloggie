@@ -3,16 +3,19 @@ using Bloggie.Web.Models.ViewModels;
 using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq.Expressions;
 
 namespace Bloggie.Web.Controllers
 {
     public class AdminBlogPostController : Controller
     {
         private readonly ITagInterface _tagInterface;
+        private readonly IBlogPostInterface _blogPostInterface;
 
-        public AdminBlogPostController(ITagInterface tagInterface)
+        public AdminBlogPostController(ITagInterface tagInterface, IBlogPostInterface blogPostInterface)
         {
             _tagInterface = tagInterface;
+            _blogPostInterface = blogPostInterface;
         }
 
         [HttpGet]
@@ -49,8 +52,17 @@ namespace Bloggie.Web.Controllers
             foreach (var selectedTag in addBlogPostRequest.SelectedTags)
             {
                 var selectedTagIdAsGuid = Guid.Parse(selectedTag);
+                var existingTags = await _tagInterface.GetAsync(selectedTagIdAsGuid);
+
+                if(existingTags != null)
+                {
+                    selectedTags.Add(existingTags);
+                }
+
+                blogPost.Tags = selectedTags;
             }
 
+            await _blogPostInterface.AddAsync(blogPost);
 
             return RedirectToAction("Add");
         }

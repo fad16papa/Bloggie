@@ -13,6 +13,7 @@ builder.Services.AddDbContext<BloggieDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieDbConntectionString"));
 });
 
+//Dependecy Container
 builder.Services.AddScoped<ITagInterface, TagService>();
 builder.Services.AddScoped<IBlogPostInterface, BlogPostService>();
 
