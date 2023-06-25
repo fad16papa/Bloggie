@@ -1,6 +1,7 @@
 ﻿using Bloggie.Web.Data;
 using Bloggie.Web.Models.Domain;
 using Bloggie.Web.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bloggie.Web.Repositories.Services
 {
@@ -13,29 +14,56 @@ namespace Bloggie.Web.Repositories.Services
             _bloggieDbContext = bloggieDbContext;
         }
 
-        public Task<BlogPost> AddAsync(BlogPost entiy)
+        public async Task<BlogPost> AddAsync(BlogPost entiy)
         {
-            throw new NotImplementedException();
+            await _bloggieDbContext.BlogPosts.AddAsync(entiy);
+            await _bloggieDbContext.SaveChangesAsync();
+            return entiy;   
         }
 
-        public Task<BlogPost> DeleteAsync(Guid id)
+        public async Task<BlogPost> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var blogPost = await _bloggieDbContext.BlogPosts.FindAsync(id);
+
+            if (blogPost != null)
+            {
+                _bloggieDbContext.Remove(blogPost);
+                await _bloggieDbContext.SaveChangesAsync();
+                return blogPost;
+            }
+
+            return null;
         }
 
-        public Task<IEnumerable<BlogPost>> GetAllAsync()
+        public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _bloggieDbContext.BlogPosts.ToListAsync();
         }
 
-        public Task<BlogPost> GetAsync(Guid id)
+        public async Task<BlogPost> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _bloggieDbContext.BlogPosts.FindAsync(id);
         }
 
-        public Task<BlogPost> UpdateAsync(BlogPost entity)
+        public async Task<BlogPost> UpdateAsync(BlogPost entity)
         {
-            throw new NotImplementedException();
+            var blogPost = await _bloggieDbContext.BlogPosts.FindAsync(entity.Id);
+
+            if(blogPost != null)
+            {
+                blogPost.Heading = entity.Heading ?? blogPost.Heading;
+                blogPost.PageTitle = entity.PageTitle ?? blogPost.PageTitle;
+                blogPost.Content = entity.Content ?? blogPost.Content;
+                blogPost.ShortDescription = entity.ShortDescription ?? blogPost.ShortDescription;
+                blogPost.FeaturedImageUrl = entity.FeaturedImageUrl ?? blogPost.FeaturedImageUrl;
+                blogPost.UrlHandle = entity.UrlHandle ?? blogPost.UrlHandle;
+                blogPost.Author = entity.Author ?? blogPost.Author;
+                blogPost.Visible = entity.Visible;
+
+                return blogPost;
+            }
+
+            return null;
         }
     }
 }
