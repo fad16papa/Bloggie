@@ -2,12 +2,13 @@
 
 namespace Bloggie.Web.Repositories.Interfaces
 {
-    public interface IBaseInterface
+    public interface IBaseInterface<T>
     {
-        Task<IEnumerable<Tag>> GetAllAsync();
-        Task<Tag> GetAsync(Guid id);
-        Task<Tag> AddAsync(Tag tag);
-        Task<Tag> UpdateAsync(Tag tag);
-        Task<Tag> DeleteAsync(Guid id);
+        Task <IEnumerable<T>> GetAllAsync();
+        Task<T> GetAsync(Guid id);
+        Task<T> AddAsync(T entiy);
+        Task<T> UpdateAsync(T entity);
+        Task<T> DeleteAsync(Guid id);
     }
 }
+ 

@@ -1,31 +1,39 @@
-﻿using Bloggie.Web.Models.Domain;
+﻿using Bloggie.Web.Data;
+using Bloggie.Web.Models.Domain;
 using Bloggie.Web.Repositories.Interfaces;
 
 namespace Bloggie.Web.Repositories.Services
 {
     public class BlogPostService : IBlogPostInterface
     {
-        public Task<Tag> AddAsync(Tag tag)
+        private readonly BloggieDbContext _bloggieDbContext;
+
+        public BlogPostService(BloggieDbContext bloggieDbContext)
+        {
+            _bloggieDbContext = bloggieDbContext;
+        }
+
+        public Task<BlogPost> AddAsync(BlogPost entiy)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Tag> DeleteAsync(Guid id)
+        public Task<BlogPost> DeleteAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Tag>> GetAllAsync()
+        public Task<IEnumerable<BlogPost>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Tag> GetAsync(Guid id)
+        public Task<BlogPost> GetAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Tag> UpdateAsync(Tag tag)
+        public Task<BlogPost> UpdateAsync(BlogPost entity)
         {
             throw new NotImplementedException();
         }

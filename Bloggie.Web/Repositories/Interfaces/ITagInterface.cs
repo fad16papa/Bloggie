@@ -2,7 +2,7 @@
 
 namespace Bloggie.Web.Repositories.Interfaces
 {
-    public interface ITagInterface : IBaseInterface
+    public interface ITagInterface : IBaseInterface<Tag>
     {
     }
 }
