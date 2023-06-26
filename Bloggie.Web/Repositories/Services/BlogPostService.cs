@@ -42,15 +42,16 @@ namespace Bloggie.Web.Repositories.Services
 
         public async Task<BlogPost> GetAsync(Guid id)
         {
-            return await _bloggieDbContext.BlogPosts.FindAsync(id);
+            return await _bloggieDbContext.BlogPosts.Include(x => x.Tags).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<BlogPost> UpdateAsync(BlogPost entity)
         {
-            var blogPost = await _bloggieDbContext.BlogPosts.FindAsync(entity.Id);
+            var blogPost = await _bloggieDbContext.BlogPosts.Include(x => x.Tags).FirstOrDefaultAsync(x => x.Id == entity.Id);
 
             if(blogPost != null)
             {
+                blogPost.Id = entity.Id;
                 blogPost.Heading = entity.Heading ?? blogPost.Heading;
                 blogPost.PageTitle = entity.PageTitle ?? blogPost.PageTitle;
                 blogPost.Content = entity.Content ?? blogPost.Content;
@@ -58,7 +59,11 @@ namespace Bloggie.Web.Repositories.Services
                 blogPost.FeaturedImageUrl = entity.FeaturedImageUrl ?? blogPost.FeaturedImageUrl;
                 blogPost.UrlHandle = entity.UrlHandle ?? blogPost.UrlHandle;
                 blogPost.Author = entity.Author ?? blogPost.Author;
+                blogPost.PublishDate = entity.PublishDate;
                 blogPost.Visible = entity.Visible;
+                blogPost.Tags = entity.Tags;
+
+                await _bloggieDbContext.SaveChangesAsync();
 
                 return blogPost;
             }
