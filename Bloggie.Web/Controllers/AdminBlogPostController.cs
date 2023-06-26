@@ -74,5 +74,19 @@ namespace Bloggie.Web.Controllers
 
             return View(blogPosts);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid Id)
+        {
+            //Retrieve blog post data thru its Id
+            var blogPost = await _blogPostInterface.GetAsync(Id);
+
+            if(blogPost != null)
+            {
+                return View(blogPost);
+            }
+
+            return View();
+        }
     }
 }
