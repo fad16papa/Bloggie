@@ -16,6 +16,7 @@ builder.Services.AddDbContext<BloggieDbContext>(options =>
 //Dependecy Container
 builder.Services.AddScoped<ITagInterface, TagService>();
 builder.Services.AddScoped<IBlogPostInterface, BlogPostService>();
+builder.Services.AddScoped<IImagesInterface, ImagesService>();
 
 var app = builder.Build();
 

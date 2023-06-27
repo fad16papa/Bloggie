@@ -1,6 +1,7 @@
 ﻿using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Bloggie.Web.Controllers
 {
@@ -18,9 +19,14 @@ namespace Bloggie.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadAsync(IFormFile formFile) 
         {
-            await _imagesInterface.UploadAsync(formFile);
+            var imageUrl = await _imagesInterface.UploadAsync(formFile);
 
-            return Ok("This is a test");
+           if(imageUrl == null)
+           {
+              return Problem("Something went wrong!", null, (int)HttpStatusCode.InternalServerError);
+           }
+
+            return new JsonResult(new { link = imageUrl });
         }
     }
 }
