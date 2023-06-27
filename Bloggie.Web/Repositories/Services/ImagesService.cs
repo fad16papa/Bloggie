@@ -19,14 +19,14 @@ namespace Bloggie.Web.Repositories.Services
                 _configuration.GetSection("Cloudinary")["ApiSecret"]);
         }
 
-        public async Task<string> UploadAsync(IFormFile formFile)
+        public async Task<string> UploadAsync(IFormFile file)
         {
             var client = new Cloudinary(account);
 
             var uploadParams = new ImageUploadParams()
             {
-                File = new FileDescription(formFile.FileName, formFile.OpenReadStream()),
-                DisplayName = formFile.FileName
+                File = new FileDescription(file.FileName, file.OpenReadStream()),
+                DisplayName = file.FileName
             };
 
             var uploadResult = await client.UploadAsync(uploadParams);

@@ -17,9 +17,9 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadAsync(IFormFile formFile) 
+        public async Task<IActionResult> UploadAsync(IFormFile file) 
         {
-            var imageUrl = await _imagesInterface.UploadAsync(formFile);
+            var imageUrl = await _imagesInterface.UploadAsync(file);
 
            if(imageUrl == null)
            {

@@ -148,7 +148,7 @@ namespace Bloggie.Web.Controllers
 
             if(updatedBlog != null)
             {
-                return RedirectToAction("Edit");
+                return RedirectToAction("List");
             }
 
             return RedirectToAction("Edit");
