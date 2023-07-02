@@ -33,10 +33,29 @@
             {
                 foreach (var blogPost in Model)
                 {
-                    <div class="mb-5 bg-light box-shadow">
+                    <div class="mb-5 bg-light box-shadow p-5">
                         <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading" 
                         class="mb-2 d-block img-fluid"/>
-                        <h2 class="mb-2">@blogPost.Heading</h2>
+
+                        <h2 class="mb-4">@blogPost.Heading</h2>
+                        <p class="mb-4">
+                            Author: @blogPost.Author
+                            <br />
+                            Published Date: @blogPost.PublishDate.ToShortDateString()
+                        </p>
+
+                        <p class="mb-3">
+                            @foreach (var tag in blogPost.Tags)
+                            {
+                                <span class="badge bg-secondary me-1">@tag.Name</span>
+                            }
+                        </p>
+
+                        <p class="mb-4">
+                            @blogPost.ShortDescription
+                        </p>
+
+                        <a class="btn btn-dark" href="#">Read More</a>
                     </div>
                 }
             }
