@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TopSecret\\Projects\\MyBlogSite\\Bloggie\\Bloggie.Web\\Bloggie.Web.csproj": {}
+    "/Users/francisdecena/project/Bloggie/Bloggie.Web/Bloggie.Web.csproj": {}
   },
   "projects": {
-    "C:\\TopSecret\\Projects\\MyBlogSite\\Bloggie\\Bloggie.Web\\Bloggie.Web.csproj": {
+    "/Users/francisdecena/project/Bloggie/Bloggie.Web/Bloggie.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TopSecret\\Projects\\MyBlogSite\\Bloggie\\Bloggie.Web\\Bloggie.Web.csproj",
+        "projectUniqueName": "/Users/francisdecena/project/Bloggie/Bloggie.Web/Bloggie.Web.csproj",
         "projectName": "Bloggie.Web",
-        "projectPath": "C:\\TopSecret\\Projects\\MyBlogSite\\Bloggie\\Bloggie.Web\\Bloggie.Web.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\TopSecret\\Projects\\MyBlogSite\\Bloggie\\Bloggie.Web\\obj\\",
+        "projectPath": "/Users/francisdecena/project/Bloggie/Bloggie.Web/Bloggie.Web.csproj",
+        "packagesPath": "/Users/francisdecena/.nuget/packages/",
+        "outputPath": "/Users/francisdecena/project/Bloggie/Bloggie.Web/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/francisdecena/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,9 +42,19 @@
               "target": "Package",
               "version": "[1.21.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -69,19 +77,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
+              "version": "[6.0.15, 6.0.15]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.16, 6.0.16]"
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[6.0.15, 6.0.15]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
+              "version": "[6.0.15, 6.0.15]"
             }
           ],
           "frameworkReferences": {
@@ -92,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
