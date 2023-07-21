@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aM4Fqg7WKP+5wF4SfiifY7ps+pT1sLrk0Dit8BWokxk5hXf+Iu+q3AjfocNgri7fNeggbmfCuxI/+5awD3FhMA==",
+  "dgSpecHash": "fxhX/S5oWblCBuzNEF2CZdqJJGkaOLotWvMj4uHY7syydC1+hgf7hqCVKiGv0ZEbanDUpI5oK+sfcGlXJp+XWg==",
   "success": true,
   "projectFilePath": "/Users/francisdecena/project/Bloggie/Bloggie.Web/Bloggie.Web.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "/Users/francisdecena/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
-    "/Users/francisdecena/.nuget/packages/microsoft.data.sqlclient/5.0.1/microsoft.data.sqlclient.5.0.1.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.data.sqlclient/5.0.2/microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.0.1/microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.data.sqlite.core/7.0.8/microsoft.data.sqlite.core.7.0.8.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore/7.0.8/microsoft.entityframeworkcore.7.0.8.nupkg.sha512",
@@ -23,8 +23,8 @@
     "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.8/microsoft.entityframeworkcore.relational.7.0.8.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.sqlite/7.0.8/microsoft.entityframeworkcore.sqlite.7.0.8.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/7.0.8/microsoft.entityframeworkcore.sqlite.core.7.0.8.nupkg.sha512",
-    "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.5/microsoft.entityframeworkcore.sqlserver.7.0.5.nupkg.sha512",
-    "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.5/microsoft.entityframeworkcore.tools.7.0.5.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.8/microsoft.entityframeworkcore.sqlserver.7.0.8.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.8/microsoft.entityframeworkcore.tools.7.0.8.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.configuration.abstractions/7.0.0/microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
@@ -84,9 +84,9 @@
     "/Users/francisdecena/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/system.windows.extensions/5.0.0/system.windows.extensions.5.0.0.nupkg.sha512",
-    "/Users/francisdecena/.nuget/packages/microsoft.netcore.app.ref/6.0.15/microsoft.netcore.app.ref.6.0.15.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.15/microsoft.aspnetcore.app.ref.6.0.15.nupkg.sha512",
-    "/Users/francisdecena/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.15/microsoft.netcore.app.host.osx-x64.6.0.15.nupkg.sha512"
+    "/Users/francisdecena/.nuget/packages/microsoft.netcore.app.host.osx-x64/6.0.15/microsoft.netcore.app.host.osx-x64.6.0.15.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.netcore.app.ref/6.0.15/microsoft.netcore.app.ref.6.0.15.nupkg.sha512"
   ],
   "logs": []
 }
