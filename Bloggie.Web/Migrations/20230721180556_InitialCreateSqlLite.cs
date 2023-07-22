@@ -17,7 +17,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -26,7 +26,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<Guid>(
@@ -67,7 +67,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -76,7 +76,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<DateTime>(
@@ -93,7 +93,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -102,7 +102,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -111,7 +111,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -120,7 +120,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
@@ -129,7 +129,7 @@ namespace Bloggie.Web.Migrations
                 type: "TEXT",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(255)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<Guid>(
@@ -147,7 +147,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Tags",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -156,7 +156,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "DisplayName",
                 table: "Tags",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -197,7 +197,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "UrlHandle",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -206,7 +206,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "ShortDescription",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -223,7 +223,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "PageTitle",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -232,7 +232,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Heading",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -241,7 +241,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "FeaturedImageUrl",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -250,7 +250,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Content",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
@@ -259,7 +259,7 @@ namespace Bloggie.Web.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Author",
                 table: "BlogPosts",
-                type: "nvarchar(max)",
+                type: "nvarchar(255)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT",
