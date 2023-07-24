@@ -15,7 +15,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BloggieDbContext>(opt =>
 {
-   opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 //Dependecy Container

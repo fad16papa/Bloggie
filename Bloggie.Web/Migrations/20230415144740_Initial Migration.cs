@@ -16,14 +16,14 @@ namespace Bloggie.Web.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Heading = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PageTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ShortDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FeaturedImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UrlHandle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Heading = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    PageTitle = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    Content = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    ShortDescription = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    FeaturedImageUrl = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    UrlHandle = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Author = table.Column<string>(type: "nvarchar(255)", nullable: true),
                     Visible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -36,8 +36,8 @@ namespace Bloggie.Web.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(255)", nullable: true),
+                    DisplayName = table.Column<string>(type: "nvarchar(255)", nullable: true)
                 },
                 constraints: table =>
                 {
