@@ -8,14 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// builder.Services.AddDbContext<BloggieDbContext>(options =>
-// {
-//     options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieDbConntectionString"));
-// });
-
-builder.Services.AddDbContext<BloggieDbContext>(opt =>
+builder.Services.AddDbContext<BloggieDbContext>(options =>
 {
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieDbConntectionString"));
 });
 
 //Dependecy Container
