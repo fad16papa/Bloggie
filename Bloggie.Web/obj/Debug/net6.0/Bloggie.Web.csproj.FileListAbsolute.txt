@@ -115,6 +115,14 @@ C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/refint/Blo
 C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/Bloggie.Web.pdb
 C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/Bloggie.Web.genruntimeconfig.cache
 C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/ref/Bloggie.Web.dll
+<<<<<<< HEAD
+=======
+C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
+C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
+>>>>>>> e025ce6934a1f83c398432b55f7ec6596db955b2
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/appsettings.Development.json
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/appsettings.json
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Bloggie.Web.staticwebassets.runtime.json
@@ -127,6 +135,9 @@ C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/ref/Bloggi
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Azure.Identity.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/CloudinaryDotNet.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Humanizer.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Data.SqlClient.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Data.Sqlite.dll
@@ -142,6 +153,8 @@ C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/ref/Bloggi
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
@@ -232,16 +245,3 @@ C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net6.0/ref/Bloggi
 /Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net6.0/Bloggie.Web.pdb
 /Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net6.0/Bloggie.Web.genruntimeconfig.cache
 /Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net6.0/ref/Bloggie.Web.dll
-<<<<<<< HEAD
-=======
-C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll
-C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
-C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
->>>>>>> e025ce6934a1f83c398432b55f7ec6596db955b2
-/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll
-/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
-/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
