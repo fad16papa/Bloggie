@@ -1,6 +1,7 @@
 using Bloggie.Web.Data;
 using Bloggie.Web.Repositories.Interfaces;
 using Bloggie.Web.Repositories.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieAuthConnectionString"));
 });
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
 
 //Dependecy Container
 builder.Services.AddScoped<ITagInterface, TagService>();
@@ -52,6 +55,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
