@@ -21,6 +21,18 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    //Defualt settings
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+});
+
 //Dependecy Container
 builder.Services.AddScoped<ITagInterface, TagService>();
 builder.Services.AddScoped<IBlogPostInterface, BlogPostService>();
