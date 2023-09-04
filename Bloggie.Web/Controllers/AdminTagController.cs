@@ -19,7 +19,6 @@ namespace Bloggie.Web.Controllers
             _tagInterface = tagInterface;
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Add()
         {
@@ -27,7 +26,6 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
-        [ActionName("Add")]
         public async Task<IActionResult> SubmitTag(AddTagRequest addTagRequest)
         {
             var tag = new Tag
@@ -42,7 +40,6 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpGet]
-        [ActionName("List")]
         public async Task<IActionResult> List()
         {
             var tags = await _tagInterface.GetAllAsync();
@@ -51,7 +48,6 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpGet]
-        [ActionName("Edit")]
         public async Task<IActionResult> Edit(Guid id)
         {
             var tag = await _tagInterface.GetAsync(id);
@@ -71,7 +67,6 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
-        [ActionName("Edit")]
         public async Task<IActionResult> Edit(EditTagRequest editTagRequest)
         {
             var tag = new Tag()
@@ -97,7 +92,6 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
-        [ActionName("Delete")]
         public async Task<IActionResult> Delete(EditTagRequest editTagRequest)
         {
             var deletedTag = await _tagInterface.DeleteAsync(editTagRequest.Id);
