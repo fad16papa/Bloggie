@@ -14,5 +14,6 @@
         public bool Visible { get; set; }
 
         public ICollection<Tag> Tags { get; set; }
+        public ICollection<BlogPostLike> Like { get; set; }
     }
 }
