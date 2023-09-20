@@ -5,7 +5,7 @@
 namespace Bloggie.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class Addlikefunctionality : Migration
+    public partial class Addinglikefunctionality : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

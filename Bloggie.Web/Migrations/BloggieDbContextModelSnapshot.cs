@@ -129,7 +129,7 @@ namespace Bloggie.Web.Migrations
             modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPostLike", b =>
                 {
                     b.HasOne("Bloggie.Web.Models.Domain.BlogPost", null)
-                        .WithMany("Like")
+                        .WithMany("Likes")
                         .HasForeignKey("BlogPostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -137,7 +137,7 @@ namespace Bloggie.Web.Migrations
 
             modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPost", b =>
                 {
-                    b.Navigation("Like");
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

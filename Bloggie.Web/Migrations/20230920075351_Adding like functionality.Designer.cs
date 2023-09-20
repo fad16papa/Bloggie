@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bloggie.Web.Migrations
 {
     [DbContext(typeof(BloggieDbContext))]
-    [Migration("20230908110715_Add like functionality")]
-    partial class Addlikefunctionality
+    [Migration("20230920075351_Adding like functionality")]
+    partial class Addinglikefunctionality
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,7 +132,7 @@ namespace Bloggie.Web.Migrations
             modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPostLike", b =>
                 {
                     b.HasOne("Bloggie.Web.Models.Domain.BlogPost", null)
-                        .WithMany("Like")
+                        .WithMany("Likes")
                         .HasForeignKey("BlogPostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -140,7 +140,7 @@ namespace Bloggie.Web.Migrations
 
             modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPost", b =>
                 {
-                    b.Navigation("Like");
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }
