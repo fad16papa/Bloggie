@@ -44,7 +44,7 @@ namespace Bloggie.Web.Controllers
                 ShortDescription = addBlogPostRequest.ShortDescription,
                 FeaturedImageUrl = addBlogPostRequest.FeaturedImageUrl,
                 UrlHandle = addBlogPostRequest.UrlHandle,
-                PublishDate = addBlogPostRequest.PublishedDate,
+                PublishedDate = addBlogPostRequest.PublishedDate,
                 Author = addBlogPostRequest.Author,
                 Visible = addBlogPostRequest.Visible,
             };
@@ -97,7 +97,7 @@ namespace Bloggie.Web.Controllers
                     FeaturedImageUrl = blogPost.FeaturedImageUrl,
                     UrlHandle = blogPost.UrlHandle,
                     ShortDescription = blogPost.ShortDescription,
-                    PublishedDate = blogPost.PublishDate,
+                    PublishedDate = blogPost.PublishedDate,
                     Visible = blogPost.Visible,
                     Tags = tagsDomainModel.Select(x => new SelectListItem
                     {
@@ -125,7 +125,7 @@ namespace Bloggie.Web.Controllers
                 Author = editBlogPostRequest.Author,
                 ShortDescription = editBlogPostRequest.ShortDescription,
                 FeaturedImageUrl = editBlogPostRequest.FeaturedImageUrl,
-                PublishDate = editBlogPostRequest.PublishedDate,
+                PublishedDate = editBlogPostRequest.PublishedDate,
                 UrlHandle = editBlogPostRequest.UrlHandle,
                 Visible = editBlogPostRequest.Visible,
             };

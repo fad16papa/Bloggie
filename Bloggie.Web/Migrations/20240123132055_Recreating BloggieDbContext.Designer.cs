@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bloggie.Web.Migrations
 {
     [DbContext(typeof(BloggieDbContext))]
-    [Migration("20230415144740_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20240123132055_Recreating BloggieDbContext")]
+    partial class RecreatingBloggieDbContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -61,7 +61,7 @@ namespace Bloggie.Web.Migrations
                     b.Property<string>("PageTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PublishDate")
+                    b.Property<DateTime>("PublishedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ShortDescription")
@@ -76,6 +76,50 @@ namespace Bloggie.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BlogPosts");
+                });
+
+            modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPostComment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BlogPostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.ToTable("BlogPostComment");
+                });
+
+            modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPostLike", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BlogPostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.ToTable("BlogPostLike");
                 });
 
             modelBuilder.Entity("Bloggie.Web.Models.Domain.Tag", b =>
@@ -108,6 +152,31 @@ namespace Bloggie.Web.Migrations
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPostComment", b =>
+                {
+                    b.HasOne("Bloggie.Web.Models.Domain.BlogPost", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPostLike", b =>
+                {
+                    b.HasOne("Bloggie.Web.Models.Domain.BlogPost", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("BlogPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Bloggie.Web.Models.Domain.BlogPost", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

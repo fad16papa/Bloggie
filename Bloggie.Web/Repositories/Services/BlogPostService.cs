@@ -65,7 +65,7 @@ namespace Bloggie.Web.Repositories.Services
                 blogPost.FeaturedImageUrl = entity.FeaturedImageUrl ?? blogPost.FeaturedImageUrl;
                 blogPost.UrlHandle = entity.UrlHandle ?? blogPost.UrlHandle;
                 blogPost.Author = entity.Author ?? blogPost.Author;
-                blogPost.PublishDate = entity.PublishDate;
+                blogPost.PublishedDate = entity.PublishedDate;
                 blogPost.Visible = entity.Visible;
                 blogPost.Tags = entity.Tags;
 
