@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+
 @model Bloggie.Web.Models.ViewModels.BlogDetailsViewModel
 
 @{
@@ -21,7 +23,7 @@
                 <div class="mb-3">
                     @if(signInManager.IsSignedIn(User))
                     {
-                       <a>
+                       <a id="btn-like" style="cursor: pointer">
                          <i class="bi bi-hand-thumbs-up"></i>
                        </a>
                     }
@@ -48,3 +50,25 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        const buttonLikeElement = document.getElementById('btn-like');
+
+        async function addLikeForBlog() {
+            fetch('/api/BlogPostLike/Add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                },
+                body: JSON.stringify({
+                    BlogPostId: '@Model.Id',
+                    UserId: '@userManager.GetUserId(User)'
+                })
+            }).then(console.log('Request finished!'));
+        }
+
+        buttonLikeElement.addEventListener('click', addLikeForBlog);
+    </script>
+}

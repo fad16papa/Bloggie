@@ -7,12 +7,12 @@ namespace Bloggie.Web.Controllers
     public class BlogsController : Controller
     {
         private readonly IBlogPostInterface _blogPostInterface;
-        private readonly IBlogPostLikeRepository _blogPostLikeRepository;
+        private readonly IBlogPostLikeInterface _blogPostLikeInterface;
 
-        public BlogsController(IBlogPostInterface blogPostInterface, IBlogPostLikeRepository blogPostLikeRepository)
+        public BlogsController(IBlogPostInterface blogPostInterface, IBlogPostLikeInterface blogPostLikeInterface)
         {
             _blogPostInterface = blogPostInterface;
-            _blogPostLikeRepository = blogPostLikeRepository;
+            _blogPostLikeInterface = blogPostLikeInterface;
         }
 
         [HttpGet]
@@ -23,7 +23,7 @@ namespace Bloggie.Web.Controllers
 
             if (blogPost != null)
             {
-                var totalLikes = await _blogPostLikeRepository.GetTotalLikes(blogPost.Id);
+                var totalLikes = await _blogPostLikeInterface.GetTotalLikes(blogPost.Id);
 
                 blogDetailsViewModel = new BlogDetailsViewModel()
                 {
