@@ -31,5 +31,14 @@ namespace Bloggie.Web.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        [Route("{blogPostId:Guid}/totalLikes")]
+        public async Task<IActionResult> GetTotalLikesForBLog([FromRoute] Guid blogPostId)
+        {
+            var totalLikes = await _blogPostLikeInterface.GetTotalLikes(blogPostId);
+
+            return Ok(totalLikes);
+        }
     }
 }
