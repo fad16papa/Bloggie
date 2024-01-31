@@ -89,11 +89,9 @@
                     UserId: '@userManager.GetUserId(User)'
                 })
             }).then(() => {
-                buttonLikeElement.innerHtml = '<i class="bi bi-hand-thumbs-up-fill"></i>';
+                buttonLikeElement.innerHTML = '<i class="bi bi-hand-thumbs-up-fill"></i>';
                 buttonLikeElement.removeEventListener('click', addLikeForBlog);
-                console.log('im here 1');
                 getTotalLikes();
-                console.log('im here 3');
             });
         }
 
