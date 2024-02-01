@@ -1,4 +1,5 @@
-﻿using Bloggie.Web.Models.ViewModels;
+﻿using Bloggie.Web.Models.Domain;
+using Bloggie.Web.Models.ViewModels;
 using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +12,16 @@ namespace Bloggie.Web.Controllers
         private readonly IBlogPostLikeInterface _blogPostLikeInterface;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IBlogPostCommentInterface _blogPostCommentInterface;
 
         public BlogsController(IBlogPostInterface blogPostInterface, IBlogPostLikeInterface blogPostLikeInterface, 
-            SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+            SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IBlogPostCommentInterface blogPostCommentInterface)
         {
             _blogPostInterface = blogPostInterface;
             _blogPostLikeInterface = blogPostLikeInterface;
             _signInManager = signInManager;
             _userManager = userManager;
+            _blogPostCommentInterface = blogPostCommentInterface;
         }
 
         [HttpGet]
@@ -66,6 +69,26 @@ namespace Bloggie.Web.Controllers
             }
 
             return View(blogDetailsViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(BlogDetailsViewModel blogDetailsViewModel)
+        {
+            if(_signInManager.IsSignedIn(User))
+            {
+                var blogPostComment = new BlogPostComment()
+                {
+                    BlogPostId = blogDetailsViewModel.Id,
+                    Description = blogDetailsViewModel.CommentDescription,
+                    UserId = Guid.Parse(_userManager.GetUserId(User)),
+                    DateAdded = DateTime.Now
+                };
+
+                await _blogPostCommentInterface.AddAsync(blogPostComment);
+                return RedirectToAction("Index", "Home", new {urlHandle = blogDetailsViewModel.UrlHandle});
+            }
+
+            return View();
         }
     }
 }

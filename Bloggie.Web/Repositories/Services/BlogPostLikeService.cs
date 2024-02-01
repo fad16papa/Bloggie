@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bloggie.Web.Repositories.Services
 {
-    public class BlogPostLikeInterface : IBlogPostLikeInterface
+    public class BlogPostLikeService : IBlogPostLikeInterface
     {
         private readonly BloggieDbContext _bloggieDbContext;
 
-        public BlogPostLikeInterface(BloggieDbContext bloggieDbContext)
+        public BlogPostLikeService(BloggieDbContext bloggieDbContext)
         {
             _bloggieDbContext = bloggieDbContext;
         }

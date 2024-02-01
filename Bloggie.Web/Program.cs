@@ -37,7 +37,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 builder.Services.AddScoped<ITagInterface, TagService>();
 builder.Services.AddScoped<IBlogPostInterface, BlogPostService>();
 builder.Services.AddScoped<IImagesInterface, ImagesService>();
-builder.Services.AddScoped<IBlogPostLikeInterface, BlogPostLikeInterface>();
+builder.Services.AddScoped<IBlogPostLikeInterface, BlogPostLikeService>();
+builder.Services.AddScoped<IBlogPostCommentInterface, BlogPostCommentService>();
 
 var app = builder.Build();
 
