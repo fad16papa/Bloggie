@@ -39,6 +39,7 @@ builder.Services.AddScoped<IBlogPostInterface, BlogPostService>();
 builder.Services.AddScoped<IImagesInterface, ImagesService>();
 builder.Services.AddScoped<IBlogPostLikeInterface, BlogPostLikeService>();
 builder.Services.AddScoped<IBlogPostCommentInterface, BlogPostCommentService>();
+builder.Services.AddScoped<IUserInterface, UserService>();
 
 var app = builder.Build();
 
