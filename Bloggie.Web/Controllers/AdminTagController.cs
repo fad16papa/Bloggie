@@ -30,11 +30,11 @@ namespace Bloggie.Web.Controllers
         {
             ValidateAddTagRequest(addTagRequest);
 
-            if(ModelState.IsValid == false)
+            if (ModelState.IsValid == false)
             {
                 return View();
-            }   
-            
+            }
+
             var tag = new Tag
             {
                 Name = addTagRequest.Name,
@@ -115,9 +115,9 @@ namespace Bloggie.Web.Controllers
 
         private void ValidateAddTagRequest(AddTagRequest addTagRequest)
         {
-            if(addTagRequest.Name != null && addTagRequest.DisplayName != null)
+            if (addTagRequest.Name != null && addTagRequest.DisplayName != null)
             {
-                if (addTagRequest.Name == addTagRequest.DisplayName) 
+                if (addTagRequest.Name == addTagRequest.DisplayName)
                 {
                     ModelState.AddModelError("DisplayName", "DisplayName should not be the same as Name");
                     ModelState.AddModelError("Name", "Name should not be the same as DisplayName");

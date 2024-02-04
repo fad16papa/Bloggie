@@ -32,7 +32,7 @@ namespace Bloggie.Web.Controllers
                 {
                     Id = Guid.Parse(item.Id),
                     Username = item.UserName,
-                    Email= item.Email,
+                    Email = item.Email,
                 });
             }
 
@@ -44,20 +44,20 @@ namespace Bloggie.Web.Controllers
         {
             var identityUser = new IdentityUser()
             {
-                UserName = userViewModel.Username, 
+                UserName = userViewModel.Username,
                 Email = userViewModel.Email
             };
 
             var identityResult = await _userManager.CreateAsync(identityUser, userViewModel.Password);
 
-            if(identityResult != null)
+            if (identityResult != null)
             {
-                if(identityResult.Succeeded) 
+                if (identityResult.Succeeded)
                 {
                     //assign new roles for the new user
                     var roles = new List<string> { "User" };
 
-                    if(userViewModel.AdminRole)
+                    if (userViewModel.AdminRole)
                     {
                         roles.Add("Admin");
                     }
@@ -83,7 +83,7 @@ namespace Bloggie.Web.Controllers
             {
                 var identityResult = await _userManager.DeleteAsync(user);
 
-                if(identityResult != null && identityResult.Succeeded)
+                if (identityResult != null && identityResult.Succeeded)
                 {
                     return RedirectToAction("List", "AdminUsers");
                 }
