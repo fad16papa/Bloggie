@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bloggie.Web.Migrations
 {
     [DbContext(typeof(BloggieDbContext))]
-    [Migration("20240123132055_Recreating BloggieDbContext")]
-    partial class RecreatingBloggieDbContext
+    [Migration("20240206112622_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

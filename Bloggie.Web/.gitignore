@@ -66,4 +66,4 @@ $RECYCLE.BIN/
 # Rider
 .idea/
 *.sln.iml
-appsettings.json
+!appsettings.json

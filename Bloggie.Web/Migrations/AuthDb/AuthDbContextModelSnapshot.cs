@@ -166,15 +166,15 @@ namespace Bloggie.Web.Migrations.AuthDb
                         {
                             Id = "cf355ec2-6177-45b2-a733-8f38793ecf36",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3c24f3f-be96-4c1e-9f15-3642648c6cae",
+                            ConcurrencyStamp = "7f3b67cf-1f35-4486-bb5c-cc61ff8321ea",
                             Email = "superAdmin@bloggie.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@BLOGGIE.COM",
                             NormalizedUserName = "SUPERADMIN@BLOGGIE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAED+Gid8VQ7sr9A9G5rRFmEHoTBzdTAeMFdJfoGBTA6kGlyZT+OdNiScJMwRfyZWVIQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBqVhq0n77lJU96GeLU0NfocAEhe2f9YCCmrVF4gOA5ZJYPwP60iQWL/xTNQ9Ge2NQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e25b3401-7423-40fd-9867-d4f0d4de0e07",
+                            SecurityStamp = "06d1f3fe-9429-41fd-98f7-09060b12c045",
                             TwoFactorEnabled = false,
                             UserName = "superAdmin@bloggie.com"
                         });

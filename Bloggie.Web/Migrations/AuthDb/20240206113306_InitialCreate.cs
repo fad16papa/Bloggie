@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Bloggie.Web.Migrations.AuthDb
 {
     /// <inheritdoc />
-    public partial class CreateAuthDb : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -171,7 +171,7 @@ namespace Bloggie.Web.Migrations.AuthDb
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "cf355ec2-6177-45b2-a733-8f38793ecf36", 0, "7a9b2be4-8fd9-43c6-b92b-483fbc1d4c5d", "superAdmin@bloggie.com", false, false, null, "SUPERADMIN@BLOGGIE.COM", "SUPERADMIN@BLOGGIE.COM", "AQAAAAIAAYagAAAAEMMW08O/s4HyM1HRRS7KSpKA+DEb17dejq5RlFMslqMNUY/C8HeZke8iI8Xec2eGhg==", null, false, "dfad9d76-e63e-4888-b043-38468eefa965", false, "superAdmin@bloggie.com" });
+                values: new object[] { "cf355ec2-6177-45b2-a733-8f38793ecf36", 0, "7f3b67cf-1f35-4486-bb5c-cc61ff8321ea", "superAdmin@bloggie.com", false, false, null, "SUPERADMIN@BLOGGIE.COM", "SUPERADMIN@BLOGGIE.COM", "AQAAAAIAAYagAAAAEBqVhq0n77lJU96GeLU0NfocAEhe2f9YCCmrVF4gOA5ZJYPwP60iQWL/xTNQ9Ge2NQ==", null, false, "06d1f3fe-9429-41fd-98f7-09060b12c045", false, "superAdmin@bloggie.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
