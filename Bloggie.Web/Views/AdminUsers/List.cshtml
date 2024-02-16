@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<form method="post">
+<form id="userCreateForm" method="post">
     <div class="modal fade" id="modalCreateUser" tabindex="-1" aria-labelledby="modalCreateUser" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="btn-userCreateCancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </div>
@@ -104,6 +104,14 @@
 
 @section Scripts{
     <script>
+        const buttonLikeElement = document.getElementById('btn-userCreateCancel');
         
+        console.log('test1');
+        function removeInputDetails() {
+            $("#userCreateForm").trigger("reset");
+        }
+        console.log('test2');
+        
+        buttonLikeElement.addEventListener('click', removeInputDetails);
     </script>
 }
