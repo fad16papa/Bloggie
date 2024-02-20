@@ -13,3 +13,4 @@ namespace Bloggie.Web.Models.ViewModels
         public string DisplayName { get; set; }
     }
 }
+    

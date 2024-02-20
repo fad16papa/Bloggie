@@ -3,6 +3,7 @@ using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Bloggie.Web.Controllers
 {
@@ -42,6 +43,11 @@ namespace Bloggie.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> List(UserViewModel userViewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(userViewModel);
+            }
+
             var identityUser = new IdentityUser()
             {
                 UserName = userViewModel.Username,
@@ -90,6 +96,18 @@ namespace Bloggie.Web.Controllers
             }
 
             return View();
+        }
+
+        private void ValidateUserInputDetails(IdentityUser checkUserEmail, IdentityUser checkUserName)
+        {
+            if (checkUserEmail != null)
+            {
+                ModelState.AddModelError("Email", $"This email {checkUserEmail.Email} is already in used. Please provide another email.");
+            }
+            if (checkUserName != null)
+            {
+                ModelState.AddModelError("UserName", $"This username {checkUserName.UserName} is already in used. Please provide another username.");
+            }
         }
     }
 }

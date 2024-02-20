@@ -7,7 +7,7 @@
 
 <div class="bg-secondary bg-opacity-10 py-2">
     <div class="container">
-        <h1>Users - Admin Functionality</h1>
+        <h1>Users - Admin</h1>
     </div>
 </div>
 
@@ -15,8 +15,12 @@
     <div class="container py-5">
 
         <div class="mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateUser">
-                Create User
+            @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateUser">
+            *@
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-toggle="modal"
+                data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Create User"
+                data-bs-target="#modalCreateUser">
+                <i class="bi bi-person-add"></i>
             </button>
         </div>
 
@@ -64,18 +68,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div id="errorMessages" class="mb-3"></div>
                     <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="text" class="form-control" asp-for="Username" required />
+                        <input type="text" class="form-control" asp-for="Username" required minlength="8"
+                            maxlength="20" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="email" class="form-control" asp-for="Email" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" asp-for="Password" required minlength="6"
-                            maxlength="20" />
+                        <input type="password" class="form-control" asp-for="Password" required minlength="8"
+                            maxlength="30" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <div class="form-check">
@@ -94,24 +103,74 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-userCreateCancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button id="btn-userCreateCancel" type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button id="btn-userCreate" type="submit" class="btn btn-primary">Create</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
 
-@section Scripts{
+@section Scripts {
     <script>
-        const buttonLikeElement = document.getElementById('btn-userCreateCancel');
-        
-        console.log('test1');
-        function removeInputDetails() {
-            $("#userCreateForm").trigger("reset");
+        const buttonCancelUserCreateElement = document.getElementById('btn-userCreateCancel');
+        @* const buttonCreateUserElement = document.getElementById('btn-userCreate');
+        const errorMessageDiv = document.getElementById('errorMessages');
+
+        async function postData() {
+        // Serialize the form data
+        var formData = $('#userCreateForm').serialize();
+
+        try {
+        // Make an asynchronous AJAX request using async/await
+        const result = await $.ajax({
+        url: '/AdminUsers/List',
+        type: 'POST',
+        data: formData,
+        });
+
+        if (result.success) {
+        // Process success, close the modal, etc.
+        $('#modalCreateUser').modal('hide');
+        window.location.href = 'http://localhost:7262/AdminUsers/List';
+        } else {
+        // Process errors and update the modal with error messages
+        displayErrors(result.error);
         }
-        console.log('test2');
-        
-        buttonLikeElement.addEventListener('click', removeInputDetails);
-    </script>
+        } catch (error) {
+        // Handle the error response
+        console.log(error);
+        }
+        }
+
+        function displayErrors(errors) {
+        // Assuming you have a div with id="errorMessages" in your modal
+        var errorContainer = $('#errorMessages');
+        errorContainer.empty();
+
+        $.each(errors, function (fieldName, fieldErrors) {
+        var errorHtml = '<p id="errorMessage" class="text-danger">' + fieldErrors.join(', ') + '</p>';
+        errorContainer.append(errorHtml);
+        });
+
+        // Show the modal with errors
+        $('#modalCreateUser').modal('show');
+        }
+
+        // Attach the async function to the form submission event
+        $(document).ready(function () {
+        $('#userCreateForm').submit(function (e) {
+        e.preventDefault();
+        postData();
+        });
+        }); *@
+
+            function removeInputDetails() {
+                errorMessageDiv.remove();
+                $("#userCreateForm").trigger("reset");
+            }
+
+        buttonCancelUserCreateElement.addEventListener('click', removeInputDetails);
+        buttonCreateUserElement.addEventListener('click', postData)    </script>
 }
