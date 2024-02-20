@@ -45,7 +45,13 @@ namespace Bloggie.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(userViewModel);
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+
+                return Json(new { success = false, errors });
+
             }
 
             var identityUser = new IdentityUser()
@@ -72,7 +78,8 @@ namespace Bloggie.Web.Controllers
 
                     if (identityResult != null && identityResult.Succeeded)
                     {
-                        return RedirectToAction("List", "AdminUsers");
+                        // return RedirectToAction("List", "AdminUsers");
+                        return Json(new { success = true });
                     }
                 }
             }

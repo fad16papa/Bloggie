@@ -10,9 +10,8 @@ namespace Bloggie.Web.Models.ViewModels
         [Required]
         [UniqueUsername(ErrorMessage = "Username is already in use.")]
         [UsernameValidation(ErrorMessage = "Invalid username format.")]
-        [MinLength(8, ErrorMessage = "8 minimum characters allowed")]
-        [MaxLength(20, ErrorMessage = "20 maximum characters allowed")]
-
+        [MinLength(8, ErrorMessage = "Username 8 minimum characters allowed")]
+        [MaxLength(20, ErrorMessage = "Username 20 maximum characters allowed")]
         public string Username { get; set; }
 
         [Required]
@@ -21,12 +20,10 @@ namespace Bloggie.Web.Models.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [PasswordValidation(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]$", ErrorMessage = "Password must meet the requirements.")]
-        [MinLength(8, ErrorMessage = "8 minimum characters allowed")]
-        [MaxLength(30, ErrorMessage = "30 maximum characters allowed")]
+        [MinLength(8, ErrorMessage = "Password 8 minimum characters allowed")]
+        [MaxLength(30, ErrorMessage = "Password 30 maximum characters allowed")]
         public string Password { get; set; }
 
-        [Required]
         public bool AdminRole { get; set; }
     }
 }
