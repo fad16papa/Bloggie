@@ -78,7 +78,6 @@ namespace Bloggie.Web.Controllers
 
                     if (identityResult != null && identityResult.Succeeded)
                     {
-                        // return RedirectToAction("List", "AdminUsers");
                         return Json(new { success = true });
                     }
                 }
@@ -103,18 +102,6 @@ namespace Bloggie.Web.Controllers
             }
 
             return View();
-        }
-
-        private void ValidateUserInputDetails(IdentityUser checkUserEmail, IdentityUser checkUserName)
-        {
-            if (checkUserEmail != null)
-            {
-                ModelState.AddModelError("Email", $"This email {checkUserEmail.Email} is already in used. Please provide another email.");
-            }
-            if (checkUserName != null)
-            {
-                ModelState.AddModelError("UserName", $"This username {checkUserName.UserName} is already in used. Please provide another username.");
-            }
         }
     }
 }
