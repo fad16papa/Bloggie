@@ -220,3 +220,5 @@ C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net7.0/ref/Bloggi
 /Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net7.0/Bloggie.Web.pdb
 /Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net7.0/Bloggie.Web.genruntimeconfig.cache
 /Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net7.0/ref/Bloggie.Web.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/MySqlConnector.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll
