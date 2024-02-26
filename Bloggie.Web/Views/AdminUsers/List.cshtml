@@ -142,8 +142,9 @@
             errorContainer.empty();
 
             $.each(errors, function (fieldName, fieldErrors) {
-                var errorHtml = '<p id="errorMessage" class="text-danger">' + fieldErrors.join(', ') + '</p>';
+                var errorHtml = '<p id="errorMessage" class="text-danger">' + fieldErrors + '</p>';
                 errorContainer.append(errorHtml);
+                console.log(fieldErrors);
             });
 
             // Show the modal with errors

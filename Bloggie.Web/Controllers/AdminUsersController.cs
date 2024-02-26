@@ -51,7 +51,6 @@ namespace Bloggie.Web.Controllers
                 );
 
                 return Json(new { success = false, errors });
-
             }
 
             var identityUser = new IdentityUser()
@@ -80,6 +79,17 @@ namespace Bloggie.Web.Controllers
                     {
                         return Json(new { success = true });
                     }
+                }
+                else
+                {
+                    // var errors = identityResult.Errors.Select(e => e.Description);
+
+                    var errors = identityResult.Errors.ToDictionary(
+                        kvp => kvp.Code,
+                        kvp => kvp.Description.ToString()
+                    );
+
+                    return Json(new { success = false, errors });
                 }
             }
 
