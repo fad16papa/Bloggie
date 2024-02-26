@@ -67,23 +67,28 @@ namespace Bloggie.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(loginViewModel);
             }
 
             var signInResult = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, false);
 
-            if (signInResult != null)
+            if (signInResult.Succeeded)
             {
-                if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
+                // Check if there is a valid return URL
+                if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl) && Url.IsLocalUrl(loginViewModel.ReturnUrl))
                 {
                     return Redirect(loginViewModel.ReturnUrl);
                 }
 
+                // Redirect to the default page after successful login
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            // If login fails, add an error message to ModelState
+            ModelState.AddModelError(string.Empty, "Invalid login attempt");
+            return View(loginViewModel);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Logout()
