@@ -19,6 +19,7 @@ namespace Bloggie.Web.Controllers
 
         [HttpPost]
         [Route("Add")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddLike([FromBody] AddLikeRequest addLikeRequest)
         {
             var blogPostLike = new BlogPostLike()

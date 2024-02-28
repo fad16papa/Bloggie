@@ -42,6 +42,7 @@
                             <td>@user.Email</td>
                             <td>
                                 <form method="post" asp-controller="AdminUsers" asp-action="Delete" asp-route-id="@user.Id">
+                                    @Html.AntiForgeryToken()
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>
@@ -112,6 +113,9 @@
         const buttonCreateUserElement = document.getElementById('btn-userCreate');
         const errorMessageDiv = document.getElementById('errorMessages');
 
+        // Get the anti-forgery token value from the cookie
+        var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+
         async function postData() {
             // Serialize the form data
             var formData = $('#userCreateForm').serialize();
@@ -120,14 +124,19 @@
                 // Make an asynchronous AJAX request using async/await
                 const result = await $.ajax({
                     url: '/AdminUsers/List',
-                    type: 'POST',
+                    method: 'POST',
+                    headers: {
+                        'RequestVerificationToken': antiForgeryToken,
+                    },
                     data: formData,
                 });
 
                 if (result.success) {
+
                     // Process success, close the modal, etc.
                     $('#modalCreateUser').modal('hide');
                     window.location.href = '/AdminUsers/List';
+
                 } else {
                     // Process errors and update the modal with error messages
                     displayErrors(result.errors);
@@ -145,7 +154,6 @@
             $.each(errors, function (fieldName, fieldErrors) {
                 var errorHtml = '<p id="errorMessage" class="text-danger">' + fieldErrors + '</p>';
                 errorContainer.append(errorHtml);
-                console.log(fieldErrors);
             });
 
             // Show the modal with errors

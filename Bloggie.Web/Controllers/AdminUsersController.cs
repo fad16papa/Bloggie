@@ -98,6 +98,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());

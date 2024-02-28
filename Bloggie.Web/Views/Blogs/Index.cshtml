@@ -104,6 +104,9 @@
         const buttonLikeElement = document.getElementById('btn-like');
         const totalLikeElement = document.getElementById('totalLikes');
 
+        // Get the anti-forgery token value from the cookie
+        var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
+
         async function getTotalLikes() {
             fetch('/api/blogpostlike/@Model.Id/totalLikes', {
                 method: 'GET',
@@ -120,6 +123,7 @@
             fetch('/api/BlogPostLike/Add', {
                 method: 'POST',
                 headers: {
+                    'RequestVerificationToken': antiForgeryToken,
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
                 },
