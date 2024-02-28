@@ -11,12 +11,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BloggieDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieDbConntectionString"));
+    options.UseMySql(builder.Configuration.GetConnectionString("BloggieDbConntectionString"),
+    new MySqlServerVersion(new Version(8, 3, 0)));
 });
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BloggieAuthConnectionString"));
+    options.UseMySql(builder.Configuration.GetConnectionString("BloggieAuthConnectionString"),
+    new MySqlServerVersion(new Version(8, 3, 0)));
 });
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
@@ -55,19 +57,19 @@ else
     app.UseHsts();
 }
 
-var scope = app.Services.CreateAsyncScope();
-var context = scope.ServiceProvider.GetRequiredService<BloggieDbContext>();
-var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+// var scope = app.Services.CreateAsyncScope();
+// var context = scope.ServiceProvider.GetRequiredService<BloggieDbContext>();
+// var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
-try
-{
-    context.Database.Migrate();
-    //DbInitializer.Initialize(context);
-}
-catch (Exception ex)
-{
-    logger.LogError(ex, "A problem occured during migration");
-}
+// try
+// {
+//     context.Database.Migrate();
+//     //DbInitializer.Initialize(context);
+// }
+// catch (Exception ex)
+// {
+//     logger.LogError(ex, "A problem occured during migration");
+// }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
