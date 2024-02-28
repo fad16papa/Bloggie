@@ -58,6 +58,7 @@
 </div>
 
 <form id="userCreateForm" method="post">
+    @Html.AntiForgeryToken()
     <div class="modal fade" id="modalCreateUser" tabindex="-1" aria-labelledby="modalCreateUser" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

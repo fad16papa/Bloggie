@@ -41,6 +41,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> List(UserViewModel userViewModel)
         {
             if (!ModelState.IsValid)

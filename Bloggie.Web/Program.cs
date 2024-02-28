@@ -57,20 +57,6 @@ else
     app.UseHsts();
 }
 
-// var scope = app.Services.CreateAsyncScope();
-// var context = scope.ServiceProvider.GetRequiredService<BloggieDbContext>();
-// var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
-// try
-// {
-//     context.Database.Migrate();
-//     //DbInitializer.Initialize(context);
-// }
-// catch (Exception ex)
-// {
-//     logger.LogError(ex, "A problem occured during migration");
-// }
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

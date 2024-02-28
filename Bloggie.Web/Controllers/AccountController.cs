@@ -63,6 +63,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -70,10 +71,16 @@ namespace Bloggie.Web.Controllers
                 return View(loginViewModel);
             }
 
-            var signInResult = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, false);
+            var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
 
-            if (signInResult.Succeeded)
+            if (user != null && await _userManager.CheckPasswordAsync(user, loginViewModel.Password))
             {
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                // Set a custom claim or additional data in the authentication cookie, if needed
+                // For example, you can store user roles, claims, or other information.
+                // await _userManager.AddClaimAsync(user, new Claim("customClaimType", "customClaimValue"));
+
                 // Check if there is a valid return URL
                 if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl) && Url.IsLocalUrl(loginViewModel.ReturnUrl))
                 {

@@ -26,6 +26,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
             ValidateAddTagRequest(addTagRequest);
@@ -74,6 +75,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditTagRequest editTagRequest)
         {
             var tag = new Tag()
