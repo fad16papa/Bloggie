@@ -24,15 +24,31 @@
 
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" id="password" class="form-control" asp-for="Password" required minlength="6" maxlength="20" />
+                    <input type="password" id="password" class="form-control" asp-for="Password" required minlength="6"
+                        maxlength="20" />
                     <span class="text-danger" asp-validation-for="Password"></span>
                 </div>
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-dark">Register</button>
+                <div class="mb-3 d-flex justify-content-between">
+                    <div>
+                        <button type="submit" id="loginBtn" class="btn btn-dark">Register</button>
+                    </div>
+                    <div class="" data-toggle="buttons">
+                        <button type="button" id="googleBtn" class="btn btn-outline-danger" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Google"><i class="bi bi-google"></i></button>
+                        <button type="button" id="githubBtn" class="btn btn-outline-dark" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="GitHub"><i class="bi bi-github"></i></button>
+                    </div>
                 </div>
             </form>
 
         </div>
     </div>
 </div>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
