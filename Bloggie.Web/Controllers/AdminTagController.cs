@@ -29,7 +29,7 @@ namespace Bloggie.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
-            ValidateAddTagRequest(addTagRequest);
+            // ValidateAddTagRequest(addTagRequest);
 
             if (ModelState.IsValid == false)
             {
