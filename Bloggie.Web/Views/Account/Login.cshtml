@@ -33,10 +33,17 @@
                     <span class="text-danger" asp-validation-for="Password"></span>
                 </div>
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-dark">Login</button>
+                <div class="mb-3 d-flex justify-content-between">
+                    <div>
+                        <button type="submit" id="loginBtn" class="btn btn-dark">Login</button>
+                    </div>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <button type="button" id="googleBtn" data="google" class="btn btn-dark"><i
+                                class="bi bi-google"></i></button>
+                        <button type="button" id="githubBtn" data="github" class="btn btn-dark"><i
+                                class="bi bi-github"></i></button>
+                    </div>
                 </div>
-
                 <input type="hidden" asp-for="ReturnUrl" />
             </form>
 
