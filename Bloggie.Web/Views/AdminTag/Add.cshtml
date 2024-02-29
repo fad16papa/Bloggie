@@ -13,12 +13,12 @@
         @Html.AntiForgeryToken()
         <div class="mb-3">
             <label class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" asp-for="Name" required maxlength="30" />
+            <input type="text" class="form-control" id="name" asp-for="Name" required maxlength="20" />
             <span class="text-danger" asp-validation-for="Name"></span>
         </div>
         <div class="mb-3">
             <label class="form-label">Display Name</label>
-            <input type="text" class="form-control" id="displayName" asp-for="DisplayName" required maxlength="30" />
+            <input type="text" class="form-control" id="displayName" asp-for="DisplayName" required maxlength="20" />
             <span class="text-danger" asp-validation-for="DisplayName"></span>
         </div>
         <div class="mb-3">
