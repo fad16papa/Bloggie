@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kHZMHA0IqGspPu2oKo4zIYXkD/5wgKN1rUqwzcTTViY=",
+  "Hash": "Oa+F1MmtMMHXBk4Gt3W5Y4VxTu1fLYxjpa/XwTokPEE=",
   "Source": "Bloggie.Web",
   "BasePath": "_content/Bloggie.Web",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/cookieConsent.js",
+      "SourceId": "Bloggie.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/",
+      "BasePath": "_content/Bloggie.Web",
+      "RelativePath": "js/cookieConsent.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/cookieConsent.js"
     },
     {
       "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/site.js",

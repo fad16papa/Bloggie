@@ -1,11 +1,8 @@
-﻿using Bloggie.Web.Data;
-using Bloggie.Web.Models.Domain;
+﻿using Bloggie.Web.Models.Domain;
 using Bloggie.Web.Models.ViewModels;
 using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Win32;
 
 namespace Bloggie.Web.Controllers
 {
@@ -29,8 +26,6 @@ namespace Bloggie.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
-            // ValidateAddTagRequest(addTagRequest);
-
             if (ModelState.IsValid == false)
             {
                 return View();
@@ -78,6 +73,11 @@ namespace Bloggie.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditTagRequest editTagRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(editTagRequest);
+            }
+
             var tag = new Tag()
             {
                 Id = editTagRequest.Id,
@@ -113,18 +113,6 @@ namespace Bloggie.Web.Controllers
 
             //show error notification
             return RedirectToAction("Edit", new { id = editTagRequest.Id });
-        }
-
-        private void ValidateAddTagRequest(AddTagRequest addTagRequest)
-        {
-            if (addTagRequest.Name != null && addTagRequest.DisplayName != null)
-            {
-                if (addTagRequest.Name == addTagRequest.DisplayName)
-                {
-                    ModelState.AddModelError("DisplayName", "DisplayName should not be the same as Name");
-                    ModelState.AddModelError("Name", "Name should not be the same as DisplayName");
-                }
-            }
         }
     }
 }

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/cookieConsent.js",
+      "PackagePath": "staticwebassets/js/cookieConsent.js"
+    },
+    {
       "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
