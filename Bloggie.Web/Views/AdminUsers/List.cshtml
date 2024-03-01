@@ -4,7 +4,6 @@
 
 }
 
-
 <div class="bg-secondary bg-opacity-10 py-2">
     <div class="container">
         <h1>Users - Admin</h1>
@@ -15,9 +14,7 @@
     <div class="container py-5">
 
         <div class="mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-toggle="modal"
-                data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Create User"
-                data-bs-target="#modalCreateUser">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateUser">
                 <i class="bi bi-person-add"></i>
             </button>
         </div>
@@ -112,6 +109,12 @@
         const buttonCancelUserCreateElement = document.getElementById('btn-userCreateCancel');
         const buttonCreateUserElement = document.getElementById('btn-userCreate');
         const errorMessageDiv = document.getElementById('errorMessages');
+
+        // Initialize Bootstrap Tooltip
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
 
         // Get the anti-forgery token value from the cookie
         var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();

@@ -9,12 +9,12 @@
 </div>
 
 <div class="container py-5">
-    @if(Model != null && Model.Any())
+    @if (Model != null && Model.Any())
     {
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th hidden>Id</th>
                     <th>Name</th>
                     <th>Display Name</th>
                     <th></th>
@@ -24,7 +24,7 @@
                 @foreach (var tag in Model)
                 {
                     <tr>
-                        <td>@tag.Id</td>
+                        <td hidden>@tag.Id</td>
                         <td>@tag.Name</td>
                         <td>@tag.DisplayName</td>
                         <td>

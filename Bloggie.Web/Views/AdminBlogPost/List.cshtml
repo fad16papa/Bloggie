@@ -10,12 +10,12 @@
 </div>
 
 <div class="container py-5">
-    @if(Model != null && Model.Any())
+    @if (Model != null && Model.Any())
     {
         <table class="table">
             <thead>
                 <tr>
-                    <td>Id</td>
+                    <td hidden>Id</td>
                     <td>Heading</td>
                     <td>Tags</td>
                     <td> </td>
@@ -25,14 +25,14 @@
                 @foreach (var blogPost in Model)
                 {
                     <tr>
-                        <td>@blogPost.Id</td>
+                        <td hidden>@blogPost.Id</td>
                         <td>@blogPost.Heading</td>
                         <td>
                             <div class="d-flex">
-                            @foreach (var tag in blogPost.Tags)
-                            {
-                                        <span class="badge bg-secondary me-1">@tag.Name</span>
-                            }
+                                @foreach (var tag in blogPost.Tags)
+                                {
+                                    <span class="badge bg-secondary me-1">@tag.Name</span>
+                                }
                             </div>
                         </td>
                         <td>
@@ -53,7 +53,7 @@
                     <td>Tags</td>
                     <td> </td>
                 </tr>
-            </thead>  
+            </thead>
         </table>
         <p>No Blog Posts Found!</p>
     }
