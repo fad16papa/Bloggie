@@ -5,8 +5,6 @@ namespace Bloggie.Web.Models.ViewModels
     public class LoginViewModel
     {
         [Required]
-        [MinLength(8, ErrorMessage = "Username 8 minimum characters allowed")]
-        [MaxLength(20, ErrorMessage = "Username 20 maximum characters allowed")]
         public string UserName { get; set; }
 
         [Required]

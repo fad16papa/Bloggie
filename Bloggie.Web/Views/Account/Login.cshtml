@@ -22,8 +22,7 @@
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" id="username" class="form-control" asp-for="UserName" required minlength="8"
-                        maxlength="20" />
+                    <input type="text" id="username" class="form-control" asp-for="UserName" required />
                     <span class="text-danger" asp-validation-for="UserName"></span>
                 </div>
 
