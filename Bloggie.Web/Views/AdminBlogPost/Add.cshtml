@@ -1,4 +1,4 @@
-﻿@model  Bloggie.Web.Models.ViewModels.AddBlogPostRequest
+﻿@model Bloggie.Web.Models.ViewModels.AddBlogPostRequest
 @{
 }
 
@@ -10,9 +10,10 @@
 
 <div class="container py-5">
     <form method="post">
+        @Html.AntiForgeryToken()
         <div class="mb-3">
             <label class="form-label">Heading</label>
-            <input type="text" class="form-control" id="heading" asp-for="Heading"/>
+            <input type="text" class="form-control" id="heading" asp-for="Heading" />
         </div>
         <div class="mb-3">
             <label class="form-label">PageTitle</label>
@@ -28,12 +29,13 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Featured Image Upload</label>
-            <input type="file" id="featuredImageUpload" class="form-control"/>
+            <input type="file" id="featuredImageUpload" class="form-control" />
         </div>
         <div class="mb-3">
             <label class="form-label">Featured Image Url</label>
-            <input type="text" class="form-control" id="featuredImageUrl" asp-for="FeaturedImageUrl" style="margin-bottom:30px"/>
-            <img src="" id="featuredImageDisplay" style="display:none;width:300px"/>
+            <input type="text" class="form-control" id="featuredImageUrl" asp-for="FeaturedImageUrl"
+                style="margin-bottom:30px" />
+            <img src="" id="featuredImageDisplay" style="display:none;width:300px" />
         </div>
         <div class="mb-3">
             <label class="form-label">Url Handle</label>
@@ -41,7 +43,8 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Published Date</label>
-            <input type="date" class="form-control" value="@DateTime.Now.Date" id="publishedDate" asp-for="PublishedDate" />
+            <input type="date" class="form-control" value="@DateTime.Now.Date" id="publishedDate"
+                asp-for="PublishedDate" />
         </div>
         <div class="mb-3">
             <label class="form-label">Author</label>
@@ -88,11 +91,11 @@
                 },
                 body: data
             }).then(response => response.json())
-            .then(result => {
-                featuredImageUrlElement.value = result.link;
-                featuredImageDisplayElement.src = result.link;
-                featuredImageDisplayElement.style.display = 'block';
-            });
+                .then(result => {
+                    featuredImageUrlElement.value = result.link;
+                    featuredImageDisplayElement.src = result.link;
+                    featuredImageDisplayElement.style.display = 'block';
+                });
         }
 
         featuredImageUploadElement.addEventListener('change', uploadFeauteredImage);

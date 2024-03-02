@@ -34,8 +34,14 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddBlogPostRequest addBlogPostRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(addBlogPostRequest);
+            }
+
             var blogPost = new BlogPost()
             {
                 Heading = addBlogPostRequest.Heading,
@@ -56,7 +62,7 @@ namespace Bloggie.Web.Controllers
                 var selectedTagIdAsGuid = Guid.Parse(selectedTag);
                 var existingTags = await _tagInterface.GetAsync(selectedTagIdAsGuid);
 
-                if(existingTags != null)
+                if (existingTags != null)
                 {
                     selectedTags.Add(existingTags);
                 }
@@ -85,7 +91,7 @@ namespace Bloggie.Web.Controllers
             var tagsDomainModel = await _tagInterface.GetAllAsync();
 
             //Map domain model to the view model
-            if(blogPost != null)
+            if (blogPost != null)
             {
                 var editBlogRequest = new EditBlogPostRequest()
                 {
@@ -114,6 +120,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditBlogPostRequest editBlogPostRequest)
         {
             var blogPost = new BlogPost()
@@ -148,7 +155,7 @@ namespace Bloggie.Web.Controllers
 
             var updatedBlog = await _blogPostInterface.UpdateAsync(blogPost);
 
-            if(updatedBlog != null)
+            if (updatedBlog != null)
             {
                 return RedirectToAction("List");
             }
