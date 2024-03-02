@@ -1,4 +1,7 @@
 ﻿using Bloggie.Web.Models.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +25,7 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
@@ -108,6 +112,35 @@ namespace Bloggie.Web.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult SignInWithGoogle()
+        {
+            var properties = new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("GoogleCallback"),
+            };
+
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        }
+
+        [HttpGet]
+        public IActionResult GoogleCallback()
+        {
+            // Handle the user after the Google authentication process
+            // For example, retrieve user information and sign in the user
+            var userInfo = HttpContext.User.Claims;
+            // Your logic for user registration or sign-in goes here
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult SignOut()
+        {
+            return SignOut(new AuthenticationProperties { RedirectUri = "/" },
+                CookieAuthenticationDefaults.AuthenticationScheme, GoogleDefaults.AuthenticationScheme);
         }
     }
 }

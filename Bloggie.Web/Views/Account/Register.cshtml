@@ -10,6 +10,7 @@
             </h1>
 
             <form method="post">
+                @Html.AntiForgeryToken()
                 <div class="mb-3">
                     <label class="form-label">Username</label>
                     <input type="text" id="username" class="form-control" asp-for="Username" required />
@@ -34,8 +35,10 @@
                         <button type="submit" id="loginBtn" class="btn btn-dark">Register</button>
                     </div>
                     <div class="" data-toggle="buttons">
-                        <button type="button" id="googleBtn" class="btn btn-outline-danger" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="Google"><i class="bi bi-google"></i></button>
+                        <a href="/Account/SignInWithGoogle" id="googleBtn" class="btn btn-outline-danger"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Google"><i
+                                class="bi bi-google"></i></a>
+
                         <button type="button" id="githubBtn" class="btn btn-outline-dark" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="GitHub"><i class="bi bi-github"></i></button>
                     </div>

@@ -3,6 +3,8 @@ using Bloggie.Web.Repositories.Interfaces;
 using Bloggie.Web.Repositories.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,19 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireLowercase = true;
     options.Password.RequiredLength = 6;
     options.Password.RequiredUniqueChars = 1;
+});
+
+// Google Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(options =>
+{
+    options.ClientId = builder.Configuration["Google:GoogleClientId"];
+    options.ClientSecret = builder.Configuration["Google:GoogleClientSecret"];
 });
 
 //Dependecy Container
