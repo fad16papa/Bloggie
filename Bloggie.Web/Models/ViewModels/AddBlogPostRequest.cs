@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Bloggie.Web.Models.ViewModels
@@ -18,6 +19,7 @@ namespace Bloggie.Web.Models.ViewModels
         [Required]
         public string UrlHandle { get; set; }
         [Required]
+        [DataType(DataType.DateTime, ErrorMessage = "Invalid DateTime format.")]
         public DateTime PublishedDate { get; set; }
         [Required]
         public string Author { get; set; }
@@ -25,7 +27,9 @@ namespace Bloggie.Web.Models.ViewModels
 
         //Display Tags
         public IEnumerable<SelectListItem> Tags { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Please select a tag")]
+        [MinLength(1, ErrorMessage = "Please select a tag")]
         //Collect Tag
         public string[] SelectedTags { get; set; } = Array.Empty<string>();
     }

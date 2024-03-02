@@ -4,6 +4,7 @@ using Bloggie.Web.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Linq.Expressions;
 
 namespace Bloggie.Web.Controllers
@@ -123,6 +124,11 @@ namespace Bloggie.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditBlogPostRequest editBlogPostRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(editBlogPostRequest);
+            }
+
             var blogPost = new BlogPost()
             {
                 Id = editBlogPostRequest.Id,
