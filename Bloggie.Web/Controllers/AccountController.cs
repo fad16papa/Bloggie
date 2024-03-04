@@ -1,12 +1,15 @@
-﻿using Bloggie.Web.Models.ViewModels;
+﻿using System.Net;
+using Bloggie.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bloggie.Web.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -114,20 +117,25 @@ namespace Bloggie.Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult SignInWithGoogle()
+        public async Task SignInWithGoogle()
         {
-            var properties = new AuthenticationProperties
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties
             {
                 RedirectUri = Url.Action("GoogleCallback"),
-            };
+            });
 
-            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+            // var properties = new AuthenticationProperties
+            // {
+            //     RedirectUri = Url.Action("GoogleCallback"),
+            // };
+
+            // return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
 
-        [HttpGet]
-        public IActionResult GoogleCallback()
+        public async Task<IActionResult> GoogleCallback()
         {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
             // Handle the user after the Google authentication process
             // For example, retrieve user information and sign in the user
             var userInfo = HttpContext.User.Claims;
@@ -135,6 +143,7 @@ namespace Bloggie.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
 
         [HttpGet]
         public IActionResult SignOut()

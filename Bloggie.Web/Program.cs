@@ -6,11 +6,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.CookiePolicy;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Load configuration
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+// Add configuration to the container
+builder.Services.AddSingleton(builder.Configuration);
 
 builder.Services.AddDbContext<BloggieDbContext>(options =>
 {
@@ -38,6 +45,13 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredUniqueChars = 1;
 });
 
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+    options.HttpOnly = HttpOnlyPolicy.None;
+    options.Secure = CookieSecurePolicy.Always; // Set to None if not using HTTPS
+});
+
 // Google Authentication
 builder.Services.AddAuthentication(options =>
 {
@@ -47,8 +61,9 @@ builder.Services.AddAuthentication(options =>
 .AddCookie()
 .AddGoogle(options =>
 {
-    options.ClientId = builder.Configuration["Google:GoogleClientId"];
-    options.ClientSecret = builder.Configuration["Google:GoogleClientSecret"];
+    var configuration = builder.Configuration;
+    options.ClientId = configuration["Google:GoogleClientId"];
+    options.ClientSecret = configuration["Google:GoogleClientSecret"];
 });
 
 //Dependecy Container
@@ -78,6 +93,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 
