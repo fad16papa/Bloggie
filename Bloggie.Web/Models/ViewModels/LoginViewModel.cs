@@ -13,6 +13,11 @@ namespace Bloggie.Web.Models.ViewModels
         [MaxLength(30, ErrorMessage = "Password has a maximum of 30 characters")]
         public string Password { get; set; }
 
+        [Display(Name = "Remember me")]
+        public bool RememberMe { get; set; }
+
         public string ReturnUrl { get; set; }
+
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
 }
