@@ -1,9 +1,5 @@
 ﻿using System.Security.Claims;
 using Bloggie.Web.Models.ViewModels;
-using CloudinaryDotNet.Actions;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -202,13 +198,6 @@ namespace Bloggie.Web.Controllers
 
                 return View("Error");
             }
-        }
-
-        [HttpGet]
-        public IActionResult SignOut()
-        {
-            return SignOut(new AuthenticationProperties { RedirectUri = "/" },
-                CookieAuthenticationDefaults.AuthenticationScheme, GoogleDefaults.AuthenticationScheme);
         }
     }
 }
