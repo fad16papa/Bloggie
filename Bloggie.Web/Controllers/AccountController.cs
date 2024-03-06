@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Security.Claims;
 using Bloggie.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -123,27 +124,61 @@ namespace Bloggie.Web.Controllers
             {
                 RedirectUri = Url.Action("GoogleCallback"),
             });
-
-            // var properties = new AuthenticationProperties
-            // {
-            //     RedirectUri = Url.Action("GoogleCallback"),
-            // };
-
-            // return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
 
         public async Task<IActionResult> GoogleCallback()
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            try
+            {
+                var authenticationResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            // Handle the user after the Google authentication process
-            // For example, retrieve user information and sign in the user
-            var userInfo = HttpContext.User.Claims;
-            // Your logic for user registration or sign-in goes here
+                if (!authenticationResult.Succeeded)
+                {
+                    var failureReason = authenticationResult.Failure?.Message;
+                    var properties = authenticationResult.Properties;
+                    // var claims = authenticationResult.Principal.Claims;
+                    // Log or print the details for analysis
+                    Console.WriteLine($"Authentication failed: {failureReason}");
+                    Console.WriteLine($"Authentication properties: {properties}");
+                    // Console.WriteLine($"Claims: {string.Join(", ", claims.Select(c => $"{c.Type}: {c.Value}"))}");
+                }
 
-            return RedirectToAction("Index", "Home");
+                if (authenticationResult.Succeeded)
+                {
+                    // The user is successfully authenticated with Google
+                    var googleClaims = authenticationResult.Principal.Claims;
+
+                    // Extract user information from Google claims
+                    var userId = googleClaims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                    var userEmail = googleClaims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+                    var userName = googleClaims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+
+                    // Your logic for user registration or sign-in goes here
+                    // For example, you can check if the user already exists in your database and sign them in.
+
+                    // TODO: Implement your user registration or sign-in logic here
+
+                    // Optionally, you can sign in the user using ASP.NET Core Identity
+                    // Example: await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    // Handle the case where authentication failed
+                    // You may want to log the failure or redirect to an error page
+                    // Example: return RedirectToAction("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle exceptions appropriately
+                // Example: _logger.LogError(ex, "An error occurred during Google authentication callback");
+                return RedirectToAction("Error");
+            }
+
+            return PartialView("Error", "This is just a test!!!");
         }
-
 
         [HttpGet]
         public IActionResult SignOut()
