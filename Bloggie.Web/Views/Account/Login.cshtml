@@ -33,18 +33,17 @@
                     <span class="text-danger" asp-validation-for="Password"></span>
                 </div>
 
-                <div class="mb-3 d-flex justify-content-between">
-                    <div>
-                        <button type="submit" id="loginBtn" class="btn btn-dark">Login</button>
-                    </div>
-                    <div class="" data-toggle="buttons">
+                <div class="mb-3 d-flex justify-content-center">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" id="loginBtn" class="btn btn-outline-primary">Login</button>
+                        <hr>
                         <a asp-asp-controller="Account" asp-action="ExternalLogin" asp-route-provider="Google"
                             asp-route-returnUrl="@Model.ReturnUrl" id="googleBtn" class="btn btn-outline-danger"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Google"><i
-                                class="bi bi-google"></i></a>
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Google"><i class="bi bi-google"></i>
+                            Google </a>
 
                         <button type="button" id="githubBtn" class="btn btn-outline-dark" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="GitHub"><i class="bi bi-github"></i></button>
+                            data-bs-placement="top" title="GitHub"><i class="bi bi-github"></i> Github </button>
                     </div>
                 </div>
                 <input type="hidden" asp-for="ReturnUrl" />
