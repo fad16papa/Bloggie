@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Bloggie.Web.Utils;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Bloggie.Web.Models.ViewModels
 {

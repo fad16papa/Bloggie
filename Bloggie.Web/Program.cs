@@ -53,17 +53,12 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 });
 
 // Google Authentication
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
-})
-.AddCookie()
+builder.Services.AddAuthentication()
 .AddGoogle(options =>
 {
     var configuration = builder.Configuration;
     options.ClientId = configuration["Google:GoogleClientId"];
-    options.ClientSecret = configuration["Google:GoogleClientSecret"];
+    options.ClientSecret = configuration["Google:GoogleClientId"];
 });
 
 //Dependecy Container
