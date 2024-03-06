@@ -62,8 +62,8 @@ builder.Services.AddAuthentication(options =>
 .AddGoogle(options =>
 {
     var configuration = builder.Configuration;
-    options.ClientId = "617052968224-22dvfoti21ilndbc2egkipgoaivhrvdo.apps.googleusercontent.com";
-    options.ClientSecret = "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";
+    options.ClientId = configuration["Google:GoogleClientId"];
+    options.ClientSecret = configuration["Google:GoogleClientSecret"];
 });
 
 //Dependecy Container
