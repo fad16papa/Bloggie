@@ -93,6 +93,8 @@ namespace Bloggie.Web.Controllers
                     return Redirect(loginViewModel.ReturnUrl);
                 }
 
+                ViewBag.Usrname = User.Identity.Name;
+
                 // Redirect to the default page after successful login
                 return RedirectToAction("Index", "Home");
             }
