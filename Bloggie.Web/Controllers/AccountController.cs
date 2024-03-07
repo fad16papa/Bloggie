@@ -2,6 +2,7 @@
 using Bloggie.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bloggie.Web.Controllers
@@ -10,11 +11,13 @@ namespace Bloggie.Web.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IEmailSender _emailSender;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailSender = emailSender;
         }
 
         [HttpGet]
@@ -40,19 +43,56 @@ namespace Bloggie.Web.Controllers
 
                 if (identityResult.Succeeded)
                 {
+                    // Generate email confirmation token
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(identityUser);
+
+                    // Build confirmation link
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = identityUser.Id, code = token }, protocol: HttpContext.Request.Scheme);
+
                     //assign the userrole
                     var roleIdentityResult = await _userManager.AddToRoleAsync(identityUser, "User");
+
+                    // Send confirmation email
+                    await _emailSender.SendEmailAsync(registerViewModel.Email, "Confirm your email",
+                        $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
 
                     if (roleIdentityResult.Succeeded)
                     {
                         //show success notification
-                        return RedirectToAction("Register");
+                        return RedirectToAction("ConfirmEmailSent");
                     }
                 }
             }
 
             //show error notification
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return RedirectToAction("Error");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return RedirectToAction("Error");
+            }
+
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("EmailConfirmed");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         [HttpGet]

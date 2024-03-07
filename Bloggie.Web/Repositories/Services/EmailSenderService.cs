@@ -1,10 +1,10 @@
 using System.Net;
 using System.Net.Mail;
-using Bloggie.Web.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Bloggie.Web.Repositories.Services
 {
-    public class EmailSenderService : IEmailSenderInterface
+    public class EmailSenderService : IEmailSender
     {
         private readonly IConfiguration _configuration;
         public EmailSenderService(IConfiguration configuration)
@@ -12,7 +12,7 @@ namespace Bloggie.Web.Repositories.Services
             _configuration = configuration;
         }
 
-        public async Task SendEmailAasync(string to, string subject, string body)
+        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var smtpServer = _configuration["EmailSettings:SmtpServer"];
             var smtpPort = int.Parse(_configuration["EmailSettings:SmtpPort"]);
@@ -29,11 +29,11 @@ namespace Bloggie.Web.Repositories.Services
                 {
                     From = new MailAddress(username),
                     Subject = subject,
-                    Body = body,
+                    Body = htmlMessage,
                     IsBodyHtml = true
                 };
 
-                message.To.Add(to);
+                message.To.Add(email);
 
                 await client.SendMailAsync(message);
             }

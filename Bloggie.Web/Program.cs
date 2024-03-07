@@ -3,9 +3,6 @@ using Bloggie.Web.Repositories.Interfaces;
 using Bloggie.Web.Repositories.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
@@ -48,7 +45,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireNonAlphanumeric = true;
     options.Password.RequireUppercase = true;
     options.Password.RequireLowercase = true;
-    options.Password.RequiredLength = 6;
+    options.Password.RequiredLength = 8;
     options.Password.RequiredUniqueChars = 1;
 });
 
@@ -75,7 +72,7 @@ builder.Services.AddScoped<IImagesInterface, ImagesService>();
 builder.Services.AddScoped<IBlogPostLikeInterface, BlogPostLikeService>();
 builder.Services.AddScoped<IBlogPostCommentInterface, BlogPostCommentService>();
 builder.Services.AddScoped<IUserInterface, UserService>();
-builder.Services.AddTransient<IEmailSenderInterface, EmailSenderService>();
+builder.Services.AddTransient<IEmailSender, EmailSenderService>();
 
 var app = builder.Build();
 
@@ -100,8 +97,21 @@ app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+#pragma warning disable ASP0014
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    // Add the following route for email confirmation
+    endpoints.MapControllerRoute(
+        name: "confirmEmail",
+        pattern: "{controller=Account}/{action=ConfirmEmail}/{userId?}/{code?}");
+});
 
 app.Run();
