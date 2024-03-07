@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,13 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
     new MySqlServerVersion(new Version(8, 3, 0)));
 });
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    //Enable email confirmation
+    options.SignIn.RequireConfirmedEmail = true;
+})
+.AddEntityFrameworkStores<AuthDbContext>()
+.AddDefaultTokenProviders();
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -68,6 +75,7 @@ builder.Services.AddScoped<IImagesInterface, ImagesService>();
 builder.Services.AddScoped<IBlogPostLikeInterface, BlogPostLikeService>();
 builder.Services.AddScoped<IBlogPostCommentInterface, BlogPostCommentService>();
 builder.Services.AddScoped<IUserInterface, UserService>();
+builder.Services.AddTransient<IEmailSenderInterface, EmailSenderService>();
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GDekCnbcfR6kAPETzvac7LBbO2671cQHzWJY77CyjaW/F6BQiah2bRDc9Ucs5JDYCYz8/4uK41opq2tR9UbvkQ==",
+  "dgSpecHash": "h1T4YeeiTCbSMRebVn0L+01/8fm6zBs/TTOQyK4Mos+eJW7le30ORTKl2KFjlMw/rxPWZFKyQZ+IGv13MC/rQA==",
   "success": true,
   "projectFilePath": "/Users/francisdecena/project/Bloggie/Bloggie.Web/Bloggie.Web.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "/Users/francisdecena/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.2.0/microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/7.0.16/microsoft.aspnetcore.identity.entityframeworkcore.7.0.16.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.aspnetcore.identity.ui/7.0.16/microsoft.aspnetcore.identity.ui.7.0.16.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.data.sqlclient/5.1.4/microsoft.data.sqlclient.5.1.4.nupkg.sha512",
@@ -35,6 +36,8 @@
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.dependencyinjection/7.0.0/microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.dependencymodel/7.0.0/microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.extensions.fileproviders.abstractions/7.0.0/microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "/Users/francisdecena/.nuget/packages/microsoft.extensions.fileproviders.embedded/7.0.16/microsoft.extensions.fileproviders.embedded.7.0.16.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.identity.core/7.0.16/microsoft.extensions.identity.core.7.0.16.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.identity.stores/7.0.16/microsoft.extensions.identity.stores.7.0.16.nupkg.sha512",
     "/Users/francisdecena/.nuget/packages/microsoft.extensions.logging/7.0.0/microsoft.extensions.logging.7.0.0.nupkg.sha512",

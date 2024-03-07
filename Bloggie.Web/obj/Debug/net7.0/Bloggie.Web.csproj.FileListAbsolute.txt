@@ -223,3 +223,6 @@ C:/TopSecret/Projects/MyBlogSite/Bloggie/Bloggie.Web/obj/Debug/net7.0/ref/Bloggi
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.Google.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.UI.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Embedded.dll
+/Users/francisdecena/project/Bloggie/Bloggie.Web/obj/Debug/net7.0/Bloggie.Web.MvcApplicationPartsAssemblyInfo.cs
