@@ -12,9 +12,12 @@ namespace Bloggie.Web.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IConfiguration _configuration;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailSender emailSender)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
+         IEmailSender emailSender, IConfiguration configuration)
         {
+            _configuration = configuration;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
@@ -59,7 +62,7 @@ namespace Bloggie.Web.Controllers
                     if (roleIdentityResult.Succeeded)
                     {
                         //show success notification
-                        return RedirectToAction("Account", "ConfirmEmailSent");
+                        return RedirectToAction("ConfirmEmailSent", "Account");
                     }
                 }
             }
@@ -87,7 +90,7 @@ namespace Bloggie.Web.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Account", "EmailConfirmed");
+                return RedirectToAction("EmailConfirmed", "Account");
             }
             else
             {
@@ -225,22 +228,48 @@ namespace Bloggie.Web.Controllers
 
                 if (email != null)
                 {
-                    // Create a new user without password if we do not have a user already
-                    var user = await _userManager.FindByEmailAsync(email);
+                    // Check if the email is already in use
+                    var existingUser = await _userManager.FindByEmailAsync(email);
 
-                    if (user == null)
+                    if (existingUser != null)
                     {
-                        user = new IdentityUser
-                        {
-                            UserName = info.Principal.FindFirstValue(ClaimTypes.Email),
-                            Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                        };
+                        // Email is already in use, handle the scenario accordingly
+                        // For example, prompt the user to log in using their existing credentials or provide options for account recovery
+                        ViewBag.ErrorTitle = "Email Already in Use";
+                        ViewBag.ErrorMessage = "The email address associated with this account is already in use. Please log in using your existing credentials or recover your account if you forgot your password.";
 
-                        await _userManager.CreateAsync(user);
+                        return View("Register");
                     }
 
-                    // Add a login (i.e insert a row for the user in AspNetUserLogins table)
-                    await _userManager.AddLoginAsync(user, info);
+                    // Create a new user if the email is not already in use
+                    var user = new IdentityUser
+                    {
+                        UserName = email,
+                        Email = email
+                    };
+
+                    var createUserResult = await _userManager.CreateAsync(user);
+                    if (!createUserResult.Succeeded)
+                    {
+                        // Handle the case where user creation failed
+                        ViewBag.ErrorTitle = "User Creation Failed";
+                        ViewBag.ErrorMessage = "Failed to create a new user account.";
+
+                        return View("Error");
+                    }
+
+                    // Add the external login for the new user
+                    var addLoginResult = await _userManager.AddLoginAsync(user, info);
+                    if (!addLoginResult.Succeeded)
+                    {
+                        // Handle the case where adding the external login failed
+                        ViewBag.ErrorTitle = "External Login Failed";
+                        ViewBag.ErrorMessage = "Failed to add external login information to the user account.";
+
+                        return View("Error");
+                    }
+
+                    // Sign in the user
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return LocalRedirect(returnUrl);
@@ -248,7 +277,7 @@ namespace Bloggie.Web.Controllers
 
                 // If we cannot find the user email we cannot continue
                 ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
-                ViewBag.ErrorMessage = "Please contact support on Pragim@PragimTech.com";
+                ViewBag.ErrorMessage = $"Please contact support on {_configuration["EmailSettings:Username"]}";
 
                 return View("Error");
             }

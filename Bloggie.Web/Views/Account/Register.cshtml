@@ -9,6 +9,13 @@
                 Register
             </h1>
 
+            @if (ViewBag.ErrorTitle != null && ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <h7 class="text-danger">@ViewBag.ErrorMessage</h7>
+                </div>
+            }
+
             <form method="post">
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
@@ -34,9 +41,9 @@
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" id="loginBtn" class="btn btn-outline-primary">Register</button>
                         <hr>
-                        <a asp-asp-controller="Account" asp-action="SignInWithGoogle" id="googleBtn"
-                            class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="Google"><i class="bi bi-google"></i> Google </a>
+                        <a asp-asp-controller="Account" asp-action="ExternalLogin" asp-route-provider="Google"
+                            id="googleBtn" class="btn btn-outline-danger" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Google"><i class="bi bi-google"></i> Google </a>
 
                         <button type="button" id="githubBtn" class="btn btn-outline-dark" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="GitHub"><i class="bi bi-github"></i> Github </button>
