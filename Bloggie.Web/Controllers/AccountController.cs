@@ -59,7 +59,7 @@ namespace Bloggie.Web.Controllers
                     if (roleIdentityResult.Succeeded)
                     {
                         //show success notification
-                        return RedirectToAction("ConfirmEmailSent");
+                        return RedirectToAction("Account", "ConfirmEmailSent");
                     }
                 }
             }
@@ -87,12 +87,24 @@ namespace Bloggie.Web.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("EmailConfirmed");
+                return RedirectToAction("Account", "EmailConfirmed");
             }
             else
             {
                 return RedirectToAction("Error");
             }
+        }
+
+        [HttpGet]
+        public IActionResult ConfirmEmailSent()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EmailConfirmed()
+        {
+            return View();
         }
 
         [HttpGet]

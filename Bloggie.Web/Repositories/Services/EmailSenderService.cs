@@ -14,29 +14,38 @@ namespace Bloggie.Web.Repositories.Services
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var smtpServer = _configuration["EmailSettings:SmtpServer"];
-            var smtpPort = int.Parse(_configuration["EmailSettings:SmtpPort"]);
-            var username = _configuration["EmailSettings:Username"];
-            var password = _configuration["EmailSettings:Password"];
-
-            using (var client = new SmtpClient(smtpServer, smtpPort))
+            try
             {
-                client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(username, password);
-                client.EnableSsl = true;
+                var smtpServer = _configuration["EmailSettings:SmtpServer"];
+                var smtpPort = int.Parse(_configuration["EmailSettings:SmtpPort"]);
+                var username = _configuration["EmailSettings:Username"];
+                var password = _configuration["EmailSettings:Password"];
 
-                var message = new MailMessage
+                using (var client = new SmtpClient(smtpServer, smtpPort))
                 {
-                    From = new MailAddress(username),
-                    Subject = subject,
-                    Body = htmlMessage,
-                    IsBodyHtml = true
-                };
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential(username, password);
+                    client.EnableSsl = true;
 
-                message.To.Add(email);
+                    var message = new MailMessage
+                    {
+                        From = new MailAddress(username),
+                        Subject = subject,
+                        Body = htmlMessage,
+                        IsBodyHtml = true
+                    };
 
-                await client.SendMailAsync(message);
+                    message.To.Add(email);
+
+                    await client.SendMailAsync(message);
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"SMTP Error: {ex.Message}");
+                Console.WriteLine($"Server Response: {ex.InnerException}");
+            }
+
         }
     }
 }
