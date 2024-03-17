@@ -90,6 +90,8 @@ namespace Bloggie.Web.Controllers
 
             if (result.Succeeded)
             {
+                //ask the user to provide a password 
+                //ask the user wants to remember the credential
                 return RedirectToAction("EmailConfirmed", "Account");
             }
             else
