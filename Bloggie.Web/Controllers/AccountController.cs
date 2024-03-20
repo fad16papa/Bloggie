@@ -240,7 +240,7 @@ namespace Bloggie.Web.Controllers
                         ViewBag.ErrorTitle = "Email Already in Use";
                         ViewBag.ErrorMessage = "The email address associated with this account is already in use. Please log in using your existing credentials or recover your account if you forgot your password.";
 
-                        return View("Register");
+                        return View("Login");
                     }
 
                     // Create a new user if the email is not already in use
