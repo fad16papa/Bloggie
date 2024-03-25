@@ -105,7 +105,7 @@ namespace Bloggie.Web.Controllers
 
             if (user != null)
             {
-                var identityResult = await _userManager.DeleteAsync(user);
+                var identityResult = await _userInterface.DeleteUserAsync(user);
 
                 if (identityResult != null && identityResult.Succeeded)
                 {

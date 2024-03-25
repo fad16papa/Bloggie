@@ -5,5 +5,7 @@ namespace Bloggie.Web.Repositories.Interfaces
     public interface IUserInterface
     {
         Task<IEnumerable<IdentityUser>> GetAll();
+
+        Task<IdentityResult> DeleteUserAsync(IdentityUser user);
     }
 }
