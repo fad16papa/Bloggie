@@ -33,8 +33,11 @@ namespace Bloggie.Web.Repositories.Services
                 try
                 {
                     //Delete all related user data
-                    var userData = _bloggieDbContext.BlogPostLike.Where(x => x.UserId == new Guid(user.Id));
-                    _bloggieDbContext.BlogPostLike.RemoveRange(userData);
+                    var userCommentsData = await _bloggieDbContext.BlogPostComment.Where(x => x.UserId == new Guid(user.Id)).ToListAsync();
+                    _bloggieDbContext.BlogPostComment.RemoveRange(userCommentsData);
+
+                    var userLikesData = await _bloggieDbContext.BlogPostLike.Where(x => x.UserId == new Guid(user.Id)).ToListAsync();
+                    _bloggieDbContext.BlogPostLike.RemoveRange(userLikesData);
 
                     //Delete the user 
                     await _userManager.DeleteAsync(user);
