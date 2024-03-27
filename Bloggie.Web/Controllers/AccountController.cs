@@ -101,6 +101,12 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult ConfirmEmailSent()
         {
             return View();
