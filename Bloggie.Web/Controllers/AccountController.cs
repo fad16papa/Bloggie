@@ -106,6 +106,17 @@ namespace Bloggie.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            return View();
+        }
+
         [HttpGet]
         public IActionResult ConfirmEmailSent()
         {
