@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tCfD4qlsuG7h6Oce4pnBxZE+ziJNqFej/U65ulT5MSU=",
+  "Hash": "bb1xfsBgu+CjHbtm10XpDaYAVePuCpgnVDdZzLjwb9A=",
   "Source": "Bloggie.Web",
   "BasePath": "_content/Bloggie.Web",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/forgotPassword.js",
+      "SourceId": "Bloggie.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/",
+      "BasePath": "_content/Bloggie.Web",
+      "RelativePath": "js/package/forgotPassword.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/package/forgotPassword.js"
     },
     {
       "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/site.js",

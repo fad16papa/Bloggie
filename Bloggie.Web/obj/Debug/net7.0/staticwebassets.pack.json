@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/forgotPassword.js",
+      "PackagePath": "staticwebassets/js/package/forgotPassword.js"
+    },
+    {
       "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
