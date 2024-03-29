@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets/js/package/forgotPassword.js"
     },
     {
+      "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/login/loginToolTip.js",
+      "PackagePath": "staticwebassets/js/package/login/loginToolTip.js"
+    },
+    {
+      "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/register/registerToolTip.js",
+      "PackagePath": "staticwebassets/js/package/register/registerToolTip.js"
+    },
+    {
       "Id": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
