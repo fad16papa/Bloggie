@@ -107,13 +107,28 @@ namespace Bloggie.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View();
+                // Build password change confirmation
+                var callbackUrl = Url.Action("PasswordChangeRequest", "Account", new { email = forgotPasswordViewModel.Email }, protocol: HttpContext.Request.Scheme);
+
+                // Send confirmation email
+                await _emailSender.SendEmailAsync(forgotPasswordViewModel.Email, "Change Password Request",
+                    $"To change your password, Please click this link: <a href='{callbackUrl}'>link</a>");
+
+                ViewBag.Title = "Email Sent";
+                ViewBag.Message = $"A link sent to your email {forgotPasswordViewModel.Email} for your changes password request.";
+
             }
 
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult PasswordChangeRequest(string email)
+        {
             return View();
         }
 
