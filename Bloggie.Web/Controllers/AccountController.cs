@@ -134,6 +134,19 @@ namespace Bloggie.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PasswordChangeRequest(PasswordChangeViewModel passwordChangeViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = await _userManager.FindByNameAsync(passwordChangeViewModel.Email);
+
+            return View();
+        }
+
         [HttpGet]
         public IActionResult ConfirmEmailSent()
         {
