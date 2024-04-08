@@ -109,23 +109,29 @@ namespace Bloggie.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                // Build password change confirmation
-                var callbackUrl = Url.Action("PasswordChangeRequest", "Account", new { email = forgotPasswordViewModel.Email }, protocol: HttpContext.Request.Scheme);
-
-                // Send confirmation email
-                await _emailSender.SendEmailAsync(forgotPasswordViewModel.Email, "Change Password Request",
-                    $"To change your password, Please click this link: <a href='{callbackUrl}'>link</a>");
-
-                ViewBag.Title = "Email Sent";
-                ViewBag.Message = $"A link sent to your email {forgotPasswordViewModel.Email} for your changes password request.";
+                var errors = ModelState.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
 
                 // Return JSON response
-                return Json(new { title = ViewBag.Title, message = ViewBag.Message });
+                return Json(new { success = false, errors });
             }
 
-            return View();
+            // Build password change confirmation
+            var callbackUrl = Url.Action("PasswordChangeRequest", "Account", new { email = forgotPasswordViewModel.Email }, protocol: HttpContext.Request.Scheme);
+
+            // Send confirmation email
+            await _emailSender.SendEmailAsync(forgotPasswordViewModel.Email, "Change Password Request",
+                $"To change your password, Please click this link: <a href='{callbackUrl}'>link</a>");
+
+            ViewBag.Title = "Email Sent";
+            ViewBag.Message = $"A link sent to your email {forgotPasswordViewModel.Email} for your changes password request.";
+
+            // Return JSON response
+            return Json(new { title = ViewBag.Title, message = ViewBag.Message });
         }
 
         [HttpGet]
@@ -143,6 +149,11 @@ namespace Bloggie.Web.Controllers
             }
 
             var user = await _userManager.FindByNameAsync(passwordChangeViewModel.Email);
+
+            if (user == null)
+            {
+
+            }
 
             return View();
         }
