@@ -14,6 +14,11 @@ $("#sendRequestChangePassword").submit(function (event) {
     return;
   }
 
+  // Clear input on modal close
+  $("#successEmailSentModal").on("hidden.bs.modal", function () {
+    $("#email").val("");
+  });
+
   // Set flag to indicate submission is in progress
   $(this).data("isSubmitting", true);
 
@@ -23,13 +28,11 @@ $("#sendRequestChangePassword").submit(function (event) {
     type: "POST",
     data: $(this).serialize(), // Serialize form data
     success: function (response) {
-      console.log("test");
       // Handle success
       $("#btnForgetPassword .spinner-border").addClass("d-none");
       $("#btnForgetPassword").prop("disabled", false);
-      // Update message on the page
-      $(".alert-success").html("<h7>" + response.title + "</h7>");
-      $(".alert-success").removeClass("d-none");
+      // Show modal on success
+      $("#successEmailSentModal").modal("show");
     },
     error: function (xhr, status, error) {
       // Handle error
