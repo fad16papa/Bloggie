@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lXz900CYbaYGiHxrGrE686AqI8uTHl3c4bN5KjNHg/w=",
+  "Hash": "Cz7gLAuVgXDaXq8ZLPQUeLj0QkHAIDNbg+VHm0jnokM=",
   "Source": "Bloggie.Web",
   "BasePath": "_content/Bloggie.Web",
   "Mode": "Default",
@@ -1103,6 +1103,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/adminUsers/adminUser.js",
+      "SourceId": "Bloggie.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/",
+      "BasePath": "_content/Bloggie.Web",
+      "RelativePath": "js/package/adminUsers/adminUser.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/package/adminUsers/adminUser.js"
+    },
+    {
+      "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/adminUsers/deleteUser.js",
+      "SourceId": "Bloggie.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/",
+      "BasePath": "_content/Bloggie.Web",
+      "RelativePath": "js/package/adminUsers/deleteUser.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/package/adminUsers/deleteUser.js"
     },
     {
       "Identity": "/Users/francisdecena/project/Bloggie/Bloggie.Web/wwwroot/js/package/forgotPassword.js",
