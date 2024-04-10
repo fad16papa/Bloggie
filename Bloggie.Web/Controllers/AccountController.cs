@@ -131,7 +131,7 @@ namespace Bloggie.Web.Controllers
             ViewBag.Message = $"A link sent to your email {forgotPasswordViewModel.Email} for your changes password request.";
 
             // Return JSON response
-            return Json(new { title = ViewBag.Title, message = ViewBag.Message });
+            return Json(new { success = true, title = ViewBag.Title, message = ViewBag.Message });
         }
 
         [HttpGet]

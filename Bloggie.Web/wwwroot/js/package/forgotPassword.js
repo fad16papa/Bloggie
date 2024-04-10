@@ -23,6 +23,7 @@ $("#sendRequestChangePassword").submit(function (event) {
     type: "POST",
     data: $(this).serialize(), // Serialize form data
     success: function (response) {
+      console.log("test");
       // Handle success
       $("#btnForgetPassword .spinner-border").addClass("d-none");
       $("#btnForgetPassword").prop("disabled", false);
