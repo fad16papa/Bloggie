@@ -24,8 +24,10 @@ namespace Bloggie.Web.Controllers
         {
             var users = await _userInterface.GetAll();
 
-            var usersViewModel = new UserViewModel();
-            usersViewModel.Users = new List<User>();
+            var usersViewModel = new UserViewModel
+            {
+                Users = new List<User>()
+            };
 
             foreach (var item in users)
             {
